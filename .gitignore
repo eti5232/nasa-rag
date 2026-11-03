@@ -1,0 +1,7 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+chroma_db_old/
+old_code/
+.files/

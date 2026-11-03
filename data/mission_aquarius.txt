@@ -1,0 +1,50 @@
+Aquarius
+Source: https://science.nasa.gov/mission/aquarius/
+
+The joint U.S./Argentinian Aquarius/Satélite de Aplicaciones Científicas (SAC)-D mission was launched June 10, 2011, and ended on June 8, 2015 , when an essential part of the power and attitude control system for the spacecraft stopped operating. The Aquarius instrument successfully achieved its science objectives and completed its primary three-year mission in November 2014.
+
+Aquarius/SAC-D mapped the salinity (the concentration of dissolved salt) at the ocean surface, information critical to improving our understanding of two major components of Earth's climate system: the water cycle and ocean circulation. By measuring ocean salinity from space, Aquarius provided new insights into how the massive natural exchange of freshwater between the ocean, atmosphere and sea ice influences ocean circulation, weather and climate.
+
+Because ocean surface salinity varies from place to place and over time, scientists can use it to trace the ocean's role in Earth's water cycle. For example, more than 85 percent of global evaporation and more than 75 percent of global precipitation occur over the ocean. By measuring changes in ocean surface salinity caused by these processes, as well as by ice melting and river runoff, Aquarius/SAC-D provided important new information about how Earth's freshwater moves between the ocean and atmosphere and around the globe.
+
+Knowing ocean surface salinity can also help scientists track ocean currents and better understand ocean circulation. Salinity, together with temperature, determines how dense and buoyant seawater is. This, in turn, drives how ocean waters are layered and mixed and the formation of water masses. Salinity also has a major effect on ocean circulation, including the flow of currents that move heat from the tropics to the poles.
+
+Aquarius/SAC-D provided essential ocean surface salinity data needed to link the water cycle and ocean circulation-two major components of the climate system. This information, in turn, will help scientists improve the accuracy of computer climate models.
+
+Global ocean salinity has been an area of much scientific uncertainty. Past measurements of salinity have been limited mostly to summertime observations in shipping lanes. Recently, a European mission has begun making ocean surface salinity measurements. With the launch of Aquarius/SAC-D, scientists were able to collect more data in the mission's first few months than had been amassed by ships and in-water sensors during the previous 125 years.
+
+Aquarius/SAC-D was designed to measure ocean surface salinity for at least three years, repeating its global pattern every seven days. During its lifetime, the mission provided monthly maps of global changes in ocean surface salinity with a resolution of 150 kilometers (93 miles), showing how salinity changes from month-to-month, season-to-season and year-to-year. The spacecraft flew in a sun-synchronous orbit 657 kilometers (408 miles) above Earth's surface.
+
+NASA's Aquarius was the primary instrument on the SAC-D spacecraft. It consisted of three passive microwave radiometers to detect the surface emission that was used to obtain salinity and an active scatterometer to measure the ocean waves that affected the precision of the salinity measurement. While salinity levels in the open ocean generally range from 32 to 37 practical salinity units, or psu (roughly equivalent to parts per thousand), the Aquarius sensor was able to detect changes in salinity as small as 0.2 psu. This is equivalent to about a "pinch" (i.e., 1/8 of a teaspoon) of salt in one gallon of water.
+
+Aquarius/SAC-D was a collaboration between NASA and Argentina's space agency, Comision Nacional de Actividades Espaciales (CONAE), with participation from Brazil, Canada, France and Italy. The Aquarius instrument was jointly built by NASA's Jet Propulsion Laboratory, Pasadena, California, and NASA's Goddard Space Flight Center, Greenbelt, Maryland. JPL managed Aquarius through the mission's commissioning phase and archived mission data. Goddard managed the mission's operations phase and processed Aquarius science data. NASA's Launch Services Program at the Kennedy Space Center in Florida is managing the launch. CONAE provided the SAC-D spacecraft, an optical camera, a thermal camera in collaboration with Canada, a microwave radiometer, sensors developed by various Argentine institutions, and the mission operations center in Argentina. France and Italy also contributed instruments.
+
+Aquarius/SAC-D mapped the salinity at the ocean surface, information critical to improving our understanding of the water cycle and ocean…
+
+The Aquarius instrument was designed to study ocean salinity, but it is also making an important contribution to studies of…
+
+NASA's Aquarius instrument on the Aquarius/SAC-D observatory gives an unprecedented look at a key factor involved in the formation of…
+
+One year after its launch, the Aquarius instrument is giving ocean sciences its first global view of sea surface salinity.
+
+Tropical Storm Lee made landfall over New Orleans on Sept. 2-3, 2011, with predicted rainfall of 15 to 20 inches…
+
+NASA's Aquarius instrument has produced its first global map of the salinity, or saltiness, of Earth's ocean surface, providing an…
+
+A Delta II rocket launches with the Aquarius/SAC-D spacecraft payload from Space Launch Complex 2 at Vandenberg Air Force Base,…
+
+A Delta II rocket launches with the Aquarius/SAC-D spacecraft payload from Space Launch Complex 2 at Vandenberg Air Force Base,…
+
+Artist's concept of NASA's Aquarius/SAC-D observatory. SAC-D observatory will provide NASA's first space-based global measurements of salinity at the ocean…
+
+Less than two months before launch, team members conduct their final checks of NASA's Aquarius instrument at Vandenberg Air Force…
+
+Engineers check cables on back of Aquarius instrument in the clean room at NASA's Jet Propulsion Laboratory in Pasadena, Calif.
+
+Engineers test Aquarius 2.5 meter reflector in the clean room at NASA's Jet Propulsion Laboratory in Pasadena, Calif.
+
+NASA Earth Science helps Americans respond to challenges and societal needs — such as wildland fires, hurricanes, and water supplies…
+
+In order to study the Earth as a whole system and understand how it is changing, NASA develops and supports…
+
+Open access to NASA’s archive of Earth science data

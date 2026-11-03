@@ -1,0 +1,44 @@
+ACE
+Source: https://science.nasa.gov/mission/ace/
+
+Designed to collect and analyze particles from near and far, ranging from solar wind ions to galactic cosmic ray nuclei, ACE far exceeded its expected life span of five years, and it continues to provide data on space weather and give advance warning of geomagnetic storms.
+
+NASA's Advanced Composition Explorer (ACE) collects and analyzes particles of solar, interplanetary, interstellar, and galactic origins. The data contributes to our understanding of the Sun, its interaction with Earth, and the evolution of the solar system.
+
+ACE continues to provide space weather reports and warnings of geomagnetic storms that can disrupt communications on Earth and harm astronauts in space.
+
+The spacecraft has operated far beyond its expected lifetime.
+
+Jan. 21, 1998: Spacecraft began operations
+
+NASA's Advanced Composition Explorer (ACE) spacecraft was designed to study spaceborne energetic particles from the Sun-Earth L1 Lagrange point, about 870,000 miles (1.4 million kilometers) from Earth.
+
+Specifically, the spacecraft was launched to investigate the matter ejected from the Sun to establish the commonality and interaction between the Sun, Earth, and the Milky Way galaxy.
+
+In addition, ACE also provides real-time space weather data and advanced warning of geomagnetic storms. ACE’s nine instruments have a collecting power that is 10 to 10,000 times greater than anything previously flown.
+
+After launch, the spacecraft’s Delta 2 launch vehicle’s second stage reignited after four hours to insert the satellite into a 110 × 851,000-mile (177 × 1.37 million-kilometer) orbit.
+
+After reaching apogee after launch, ACE inserted itself into its Lissajous orbit around the L1 point. The spacecraft was declared operational Jan. 21, 1998.
+
+As of 2015, it continued to provide near-real-time 24/7 coverage of solar wind parameters and to measure solar energetic particle intensities.
+
+With the exception of the SEPICA instrument (data from which was no longer received after Feb. 4, 2005), all instruments on ACE remain operational.
+
+ACE Real-Time Solar Wind Data – NOAA Space Weather Prediction Center
+
+National Space Science Data Center Master Catalog: ACE
+
+Siddiqi, Asif A. Beyond Earth: A Chronicle of Deep Space Exploration, 1958-2016 . NASA History Program Office, 2018.
+
+Total Solar Eclipses Shine a Light on the Solar Wind with Help from NASA’s ACE…
+
+ACE Celebrates 20 Years of Solar Wind, Cosmic Ray Discoveries
+
+Webb is the premier observatory of the next decade, serving thousands of astronomers worldwide. It studies every phase in the…
+
+This rover and its aerial sidekick were assigned to study the geology of Mars and seek signs of ancient microbial…
+
+On a mission to “touch the Sun,” NASA's Parker Solar Probe became the first spacecraft to fly through the corona…
+
+NASA’s Juno spacecraft entered orbit around Jupiter in 2016, the first explorer to peer below the planet's dense clouds to…

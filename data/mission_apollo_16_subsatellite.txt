@@ -1,0 +1,26 @@
+Apollo 16 Subsatellite
+Source: https://science.nasa.gov/mission/apollo-16-subsatellite/
+
+The main objectives of this small satellite were to study the plasma, particle, and magnetic-field environment of the Moon and map the lunar gravity field.
+
+The satellite orbited the Moon for 34 days, during which it provided data similar to that of the Apollo 15 subsatellite. Its short lifetime (instead of the planned one year) resulted from the low orbit into which the Apollo 16 astronauts were forced to place it because of problems with the main engine of their Command and Service Module.
+
+Nearly identical to its predecessor, the Apollo 16 Particle and Fields Subsatellite was ejected from the Apollo 16 Command and Service Module (CSM) about 4 hours prior to the crew's trans-Earth injection burn, which sent them home from the Moon.
+
+Because of problems with the Apollo CSM main engine, the crew was forced to release the subsatellite in a low lunar orbit of 100 x 100 kilometers at 10&deg; inclination. The orbit was rapidly altered by gravitational perturbations, and the probe crashed onto the lunar surface after 34 days in orbit rather than the planned one year. Impact point was at 10.2 degrees north latitude and 112 degrees east longitude at 21:00 UT on May 29, 1972. However, because of its low orbit, the spacecraft did return some valuable low-altitude data.
+
+National Space Science Data Center Master Catalog: Apollo 16 Subsatellite
+
+Siddiqi, Asif A. Deep Space Chronicle: A Chronology of Deep Space and Planetary Probes 1958-2000 , NASA, 2002.
+
+Update: Artemis II Crew Flies Around the Moon
+
+NASA’s Day of Remembrance Honors Fallen Heroes of Exploration
+
+Webb is the premier observatory of the next decade, serving thousands of astronomers worldwide. It studies every phase in the…
+
+This rover and its aerial sidekick were assigned to study the geology of Mars and seek signs of ancient microbial…
+
+On a mission to “touch the Sun,” NASA's Parker Solar Probe became the first spacecraft to fly through the corona…
+
+NASA’s Juno spacecraft entered orbit around Jupiter in 2016, the first explorer to peer below the planet's dense clouds to…

@@ -1,0 +1,66 @@
+Aqua
+Source: https://science.nasa.gov/mission/aqua/
+
+About The Aqua Spacecraft and Instruments Key Project Personnel Monthly Status Reports Pre-launch Photos
+
+Stories and Publications News Publications Presentations
+
+For Researchers Community Workshops Other Resources
+
+Aqua is a NASA Earth Science satellite mission that is collecting data about the Earth's water cycle.
+
+Aqua , Latin for water , is a NASA Earth Science satellite mission named for the large amount of information that the mission is collecting about the Earth's water cycle, including evaporation from the oceans, water vapor in the atmosphere, clouds, precipitation, soil moisture, sea ice, land ice, and snow cover on the land and ice. Additional variables also being measured by Aqua include radiative energy fluxes, aerosols, vegetation cover on the land, phytoplankton and dissolved organic matter in the oceans, and air, land, and water temperatures.
+
+The Aqua mission is a part of the NASA-centered international Earth Observing System (EOS). Aqua was formerly named EOS PM, signifying its afternoon equatorial crossing time.
+
+Aqua was launched on May 4, 2002, and has six Earth-observing instruments on board, collecting a variety of global datasets. Aqua was originally developed for a six-year design life but has now far exceeded that original goal.
+
+Aqua continues collecting and transmitting high-quality data from four of its six instruments:
+
+Clouds and the Earth’s Radiant Energy System (CERES)
+
+Moderate Resolution Imaging Spectroradiometer (MODIS)
+
+Advanced Microwave Scanning Radiometer for EOS (AMSR-E) , suffered a major anomaly in October 2011 and ceased its high-quality data transmission at that time. It was later turned back on and transmitted reduced quality data important for intercalibration purposes before being powered off in March 2016.
+
+Humidity Sounder for Brazil (HSB) , collected approximately nine months of high quality data but failed in February 2003.
+
+What is its past, current and future altitude and equator crossing time?
+
+Drag your cursor over the graph below to find out.
+
+Due to fuel limitations, Aqua completed the last of its drag makeup maneuvers in December 2021 and is now in a free-drift mode, slowly descending below the A-Train and drifting to later equatorial crossing times, and lower altitudes.
+
+Latest Stories Featuring Aqua Research and Data
+
+During El Niño, a cascade of fires across the tropics begins in equatorial Asia and continues in the central and…
+
+The ice reached its third-lowest maximum extent since satellite observations began.
+
+Satellite records show Arctic sea ice covering less of the ocean in both winter and summer.
+
+After days of torrential rain, the river rose to record-breaking levels in parts of Nepal and India.
+
+Several ingredients came together off the Pacific coast of Mexico to generate one of the strongest storms the eastern Pacific…
+
+With Indonesia gripped by drought, fires are smoldering on the surface and underground.
+
+The first in a series of episodes looking at the instruments and applications of the Aqua satellite.
+
+Aqua AIRS: Visions of Weather and Climate
+
+One of the primary instruments on NASA's Aqua spacecraft is the Atmospheric Infrared Sounder (AIRS), which is providing a detailed three-dimensional view of the atmosphere. This new view is helping scientists to better understand the climate system and is proving of great value also in several practical applications, including weather forecasting.
+
+From June 2002 to early October 2011, the Advanced Microwave Scanning Radiometer for the Earth Observing System (AMSR-E) on the Aqua satellite provided a wealth of data about the Earth's water cycle. Among the many variables calculated from AMSR-E data are sea surface temperature, atmospheric water vapor, rainfall, Arctic and Antarctic sea ice coverages, and snow cover. The AMSR-E data allow the calculation of surface variables under nearly all weather conditions, irrespective of cloud cover and irrespective of whether it is daytime or nighttime.
+
+Beautiful images from the MODIS instrument on NASA's Aqua and Terra satellites are used by people all over the world every day. But MODIS is about more than just pretty pictures -- the instrument's contributions to science include a better understanding of the Earth's cloud cover, aerosols, phytoplankton levels, and land cover.
+
+Aqua CERES: Tracking Earth's Heat Balance
+
+Is the heat budget of the planet changing? Thermometers on the ground can give us a snapshot of a summer heatwave or winter cold spell, but it takes something like NASA's CERES instruments to give a long term picture of whether the planet is keeping more of its heat than it loses back into space.
+
+From their vantage point high above the Earth’s surface, NASA’s Earth-observing satellite missions are uniquely positioned to obtain comprehensive global…
+
+In order to study the Earth as a whole system and understand how it is changing, NASA develops and supports…
+
+Open access to NASA’s archive of Earth science data

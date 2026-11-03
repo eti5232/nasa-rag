@@ -1,0 +1,51 @@
+/* RTL: הפריסה הכללית מימין לשמאל, וכל פסקה קובעת לעצמה כיוון לפי השפה שלה */
+html, body, #root {
+  direction: rtl;
+}
+
+textarea, p, li, h1, h2, h3, h4,
+.prose div, .message-content div, .whitespace-pre-wrap {
+  unicode-bidi: plaintext;
+  text-align: start;
+}
+
+/* רקע חלל: גרדיאנטים וכוכבים, בלי תמונות חיצוניות */
+#root {
+  background: transparent !important;
+}
+body {
+  background-color: #04060f;
+  background-image:
+    radial-gradient(1.2px 1.2px at 40px 60px, rgba(255,255,255,.75), transparent),
+    radial-gradient(1px 1px at 170px 130px, rgba(255,255,255,.55), transparent),
+    radial-gradient(1.6px 1.6px at 260px 40px, rgba(160,220,255,.7), transparent),
+    radial-gradient(1px 1px at 90px 210px, rgba(255,255,255,.5), transparent),
+    radial-gradient(900px 520px at 85% -5%, rgba(111,140,255,.18), transparent 62%),
+    radial-gradient(700px 480px at 10% 110%, rgba(139,123,255,.12), transparent 60%);
+  background-size: 300px 260px, 300px 260px, 300px 260px, 300px 260px, 100% 100%, 100% 100%;
+  background-repeat: repeat, repeat, repeat, repeat, no-repeat, no-repeat;
+}
+
+/* שדה הקלט הצף */
+#chat-input, .chat-input, form:has(textarea) {
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .55);
+}
+form:has(textarea):focus-within {
+  box-shadow: 0 0 0 3px rgba(95, 212, 255, .14), 0 0 40px rgba(95, 212, 255, .18), 0 18px 50px rgba(0, 0, 0, .55);
+}
+
+/* למשתמשים שמעדיפים פחות תנועה: מקצרים אנימציות ולא מבטלים אותן, כדי שהאלמנטים יגיעו למצב הסופי */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* שלב 14 - כפתורי הקלטה בקול (voice.js), בתוך תיבת השאלה */
+#voice-box { display: flex; align-items: center; gap: 4px; direction: ltr; }
+#voice-box button { height: 32px; min-width: 32px; padding: 0 8px; border-radius: 16px; border: 0; background: transparent; color: hsl(var(--muted-foreground)); font-size: 13px; cursor: pointer; }
+#voice-box button:hover { background: hsl(var(--accent)); color: hsl(var(--foreground)); }
+#voice-box button#voice-mic { font-size: 16px; }
+#voice-box button.on { background: #e5484d; color: #fff; }

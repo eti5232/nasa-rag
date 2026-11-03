@@ -1,0 +1,38 @@
+3D Tissue Chips
+Source: https://science.nasa.gov/mission/3d-tissue-chips/
+
+Small devices about the size of a USB drive, 3D tissue chips replicate cells of specific organs – heart, pancreas, liver, and others. These allow researchers to test and observe how cells respond to various environmental factors, such as radiation and microgravity, and treatments, including medications and chemotherapy.
+
+Developing tissue chips that can be used for modeling of acute and/or chronic exposures for 6 months or longer
+
+3D tissues and microphysiological systems (MPS) replicate human organs using organ-specific cells—such as heart, pancreatic, liver, and others—on small devices, roughly the size of a USB drive. Researchers and clinicians use these tissue chips to test and observe how cells respond to various environmental factors (such as radiation and microgravity) and treatments (including medications and chemotherapy). This effort, sponsored by NASA’s [RI1] [CL(D2] [CL(D3] Biological and Physical Sciences Division, reflects a collaboration between NASA’s Space Biology Program, NASA’s Human Research Program, NIH’s National Center for Advancing Translational Sciences (NCATS), the NIH National Institute of Allergy and Infectious Diseases (NIAID), the NIH National Cancer Institute (NCI), Biomedical Advanced Research and Development Authority (BARDA), and the FDA. The agencies selected nine projects that will adapt existing 3D tissues and microphysiological systems (MPS) — also known as “tissue chips” or “organs-on-chips” — to expand tissue viability and robust function for a minimum of 6 months and fully test and validate these models for acute and chronic stressors.
+
+Innovative models, such as 3D Tissue Chips enable researchers to study how a patient might respond to a treatment so that therapy can be tailored to their personal response for improved clinical outcome.
+
+3D Tissue Chips support fundamental science by helping NASA understand the physiological and mechanistic changes due to spaceflight stressors, such as microgravity and radiation. 3D Tissue Chips will help determine individual sensitivity for each astronaut allowing NASA to tailor countermeasures for their need to create a more personalized medical kit for long duration exploration missions.
+
+3D Tissue Chips provide insight into disease models, drug development, clinical trial design, and chemical/environmental exposures and countermeasures. In-depth characterization is a critical next step in the evolution of these technologies is, particularly when considering acute versus chronic exposures.
+
+Assessing Long-Term Effects of Radiation Exposure in Engineered Heart & Vascular Tissues - Understanding how and why radiation exposure causes disease by using heart and blood vessel-like tissues created with stem cell biology and tissue engineering technology.
+
+Bioengineer Long-lasting 3D Neurovascular Microphysiological System to Model Chronic Inflammation Mediated Neurodegeneration - Developing a long-lasting neurovascular model that can be used to evaluate the impact of chronic stressors to the brain.
+
+Extended Culture of Kidney MPS and Organoids to Model Acute and Chronic Exposure to Drugs and Environmental Toxins - Using kidney chips and organoids to better understand injury and recovery from chronic exposure to drugs, toxins and pathogens.
+
+Identification of Biomarkers and Pathological Mechanisms via Longitudinal Analysis of Neurological and Cerebrovascular Responses to Neurotoxic Stress Using a Multi-cellular Integrated Model of the Human Brain - Determining how genetically divers human brain tissue responds to neurotoxic stresses that may be encountered in space.
+
+Long-lived Single- and Multi-organ Tissue Equivalent (OTE) Platforms to Model the Response of Human Tissues to Various Stressors - Using human organ tissue equivalents (OTEs) to gain insight into how different human tissues respond to spaceflight stressors.
+
+Long-term Patient iPC Vessel Chip Model to Assess Stressors of Atherosclerosis and mRNA Therapeutics - Studying vascular signaling mechanisms to identify therapeutics for aging and radiation-related vascular diseases.
+
+Modeling Anthracycline-triggered Vascular Dysfunction - Using an organ-on-chip platform to investigate how doxorubicin triggers vascular cell dysfunction which will support development of new therapeutic interventions to curtail off-target effects.
+
+Multi-Organ Repair Post Hypoxia (MORPH) - Studying the effects of acute hypoxia on organ systems that are most critically affected: brain, heart, bone marrow and vasculature.
+
+Understanding the Brain-Liver-Gut Axis during Spaceflight and Aging - Providing long-term, multicellular complex human tissue models for studying responses to acute and chronic spaceflight stressors that mimic deep space exploration.
+
+25 años de ciencia a bordo de la Estación Espacial Internacional
+
+Miniature Avatars Take on NASA’s Biggest Challenge
+
+4 Agencies Select 8 Research Projects to Extend Longevity of 3D Tissue Chips to 6…

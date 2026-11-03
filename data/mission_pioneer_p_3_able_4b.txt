@@ -1,0 +1,36 @@
+Able 4B (Pioneer P-3)
+Source: https://science.nasa.gov/mission/pioneer-p-3-able-4b/
+
+Intended to be a lunar orbiter probe, its objectives were to place a highly instrumented probe in lunar orbit, to investigate the environment between the Earth and Moon, and to develop technology for controlling and maneuvering spacecraft from Earth. The spacecraft was equipped to take images of the lunar surface with a television-like system, estimate the Moon's mass and topography of the poles, record the distribution and velocity of micrometeorites, and study radiation, magnetic fields, and low frequency electromagnetic waves in space. A mid-course propulsion system and injection rocket would have been the first U.S. self-contained propulsion system capable of operation many months after launch, at great distances from Earth, and the first U.S. tests of maneuvering a satellite in space.
+
+The spacecraft was the first test of a combined Atlas booster and upper stage to carry heavier payloads into space.
+
+This was the first of three spacecraft designed by Space Technology Laboratories (STL) for a U.S. rush to the Moon in 1959-1960. Two of the spacecraft had originally been slated for Venus orbit in June 1959, but mission planners redirected the missions after the success of the Soviet Automatic Interplanetary Station (Luna 3) mission.
+
+All the scientific experiments and internal instrumentation were powered by nickel-cadmium batteries charged from 1,100 solar cells on four paddles, which made the vehicle resemble the recently-launched Explorer 6.
+
+The imaging system, the same one used on Explorer 6, was comprised of a tiny 2.5-pound (1.13-kilogram) scanning device developed by STL that was “to be used in [an] attempt to get a crude outline of the Moon’s surface if the probe achieve[d] lunar orbit.”
+
+Each probe also carried a hydrazine monopropellant tank with two thrust chambers, each with 20 pounds-force (9 kilograms-force) of thrust.
+
+One probe was for lunar orbit insertion at a range of about 5,000 miles (8,000 kilometers) from the Moon. Ideal lunar orbital parameters were planned as 4,000 × 3,000 miles (6,400 × 4,800 kilometers).
+
+The mission also inaugurated the first use of the Atlas-with-an-upper-stage combination, affording increased payload weight.
+
+During this first launch, which took place on Thanksgiving Day 1959, the nose fairing began to break away just 45 seconds after liftoff, still during first stage operation. Aerodynamic forces then caused the third stage and payload to break away and explode.
+
+The ground lost contact with the tumbling booster at T+104 seconds. An investigation showed that the 10-foot (3-meter) fiberglass shroud failed because there had been no measures to account for pressure differentials as the rocket rapidly gained altitude after liftoff.
+
+Siddiqi, Asif A. Beyond Earth: A Chronicle of Deep Space Exploration, 1958-2016 . NASA History Program Office, 2018.
+
+Blue Origin’s New Glenn Rocket Go for Launch!
+
+50 Years Ago: Pioneer 10 Launches to Explore Jupiter
+
+Webb is the premier observatory of the next decade, serving thousands of astronomers worldwide. It studies every phase in the…
+
+This rover and its aerial sidekick were assigned to study the geology of Mars and seek signs of ancient microbial…
+
+On a mission to “touch the Sun,” NASA's Parker Solar Probe became the first spacecraft to fly through the corona…
+
+NASA’s Juno spacecraft entered orbit around Jupiter in 2016, the first explorer to peer below the planet's dense clouds to…

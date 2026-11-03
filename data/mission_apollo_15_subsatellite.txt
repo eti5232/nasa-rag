@@ -1,0 +1,28 @@
+Apollo 15 Subsatellite
+Source: https://science.nasa.gov/mission/apollo-15-subsatellite/
+
+The spacecraft's main objectives were to study the plasma, particle and magnetic-field environment of the Moon and map the lunar gravity field.
+
+The subsatellite, deployed by the Apollo 15 crew shortly before they left lunar orbit, provided about six months of data coverage before electronics failures in February 1972 caused the loss of most of the data channels. Nevertheless, all mission objectives were fulfilled. Measurements supported Explorer 35's finding that the Moon acts as a physical barrier to the solar wind, creating a "hole" in the flow of charged particles.
+
+This small satellite was deployed by the Apollo 15 crew shortly before leaving lunar orbit. The probe was designed around a 35.6-centimeter-diameter hexagonal structure that was equipped with three instrument booms. Power supply came from solar panels and chemical batteries.
+
+The instruments measured the strength and direction of interplanetary and terrestrial magnetic fields, detected variations in the lunar gravity field, and measured proton and electron flux. The satellite confirmed Explorer 35's finding that while Earth's magnetic field deflects the incoming solar wind into a tail, the Moon acts as a physical barrier due to its weak field and creates a "hole" in the wind.
+
+An electronic failure on Feb. 3, 1972 formally ended the mission. Although it originally had a one-year design life, all mission objectives were fulfilled.
+
+National Space Science Data Center Master Catalog: Apollo 15 Subsatellite
+
+Siddiqi, Asif A. Beyond Earth: A Chronicle of Deep Space Exploration, 1958-2016 . NASA History Program Office, 2018.
+
+Update: Artemis II Crew Flies Around the Moon
+
+NASA’s Day of Remembrance Honors Fallen Heroes of Exploration
+
+Webb is the premier observatory of the next decade, serving thousands of astronomers worldwide. It studies every phase in the…
+
+This rover and its aerial sidekick were assigned to study the geology of Mars and seek signs of ancient microbial…
+
+On a mission to “touch the Sun,” NASA's Parker Solar Probe became the first spacecraft to fly through the corona…
+
+NASA’s Juno spacecraft entered orbit around Jupiter in 2016, the first explorer to peer below the planet's dense clouds to…

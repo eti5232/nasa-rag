@@ -1,0 +1,56 @@
+Advanced Composite Solar Sail System (ACS3)
+Source: https://www.nasa.gov/mission/acs3/
+
+NASA is developing new deployable structures and materials technologies for solar sail propulsion systems destined for future low-cost deep space missions. Just as a sailboat is powered by wind in a sail, solar sails employ the pressure of sunlight for propulsion, eliminating the need for conventional rocket propellant.
+
+Sail Along with NASA’s Solar Sail Tech Demo in Real-Time Simulation
+
+Like a Diamond in the Sky: How to Spot NASA’s Solar Sail Demo in Orbit
+
+NASA to Hoist Its Sail: Solar Sail Mission Gets Ready for Launch
+
+Update on NASA’s Advanced Composite Solar Sail System
+
+What is the Advanced Composite Solar Sail System?
+
+NASA is developing new deployable structures and materials technologies for solar sail propulsion systems destined for future low-cost deep space missions. Just as a sailboat is powered by wind in a sail, solar sails employ the pressure of sunlight for propulsion, eliminating the need for conventional rocket propellant.
+
+Small Satellite Missions blog updates about the Advanced Composite Solar Sail System
+
+Mission operators for NASA’s Advanced Composite Solar Sail System continue to analyze data from the spacecraft and characterize the performance…
+
+Since deploying its sail last week, the Advanced Composite Solar Sail System spacecraft continues sending  images and data, helping the…
+
+NASA’s Advanced Composite Solar Sail System is now fully deployed in space after a successful test of its sail-hoisting boom…
+
+Setting Sail to Travel Through Space: 5 Things to Know about our New Mission
+
+5. It’s a bird…it’s a plane…it’s our solar sail!
+
+Solar sails use the pressure of sunlight for propulsion much like sailboats harness the wind, eliminating the need for rocket fuel after the spacecraft has launched. If all goes according to plan, this technology demonstration will help us test how the solar sail shape and design work in different orbits.
+
+The Advanced Composite Solar Sail System spacecraft is a CubeSat the size of a microwave, but when the package inside is fully unfurled, it will measure about 860 square feet (80 square meters) which is about the size of six parking spots. Once fully deployed, it will be the biggest, functional solar sail system – capable of controlled propulsion maneuvers – to be tested in space
+
+If successful, the Advanced Composite Solar Sail System will be  the second NASA solar sail to deploy in space, and not only will it be much larger, but this system will also test navigation capabilities to change the spacecraft’s orbit. This will help us gather data for future missions with even larger sails.
+
+Just like a sailboat mast supports its cloth sails, a solar sail has support beams called booms that provide structure. The Advanced Composite Solar Sail System mission’s primary objective is to deploy a new type of boom. These booms are made from flexible polymer and carbon fiber materials that are stiffer and 75% lighter than previous boom designs. They can also be flattened and rolled like a tape measure. Two booms spanning the diagonal of the square (23 feet or about 7 meters in length) could be rolled up and fit into the palm of your hand!
+
+5. It’s a bird…it’s a plane…it’s our solar sail!
+
+About one to two months after launch, the Advanced Composite Solar Sail System spacecraft will deploy its booms and unfurl its solar sail. Because of its large size and reflective material, the spacecraft may be visible from Earth with the naked eye if the lighting conditions and orientation are just right!
+
+Visit the blog for the latest updates on the Advanced Composite Solar Sail System Mission!
+
+Learn about SmallSats and CubeSats and why they're important to NASA.
+
+TechPort showcases NASA’s portfolio of active and completed technology projects.
+
+Small Spacecraft Systems Virtual Institute (S3VI)
+
+RTMD Small Spacecraft & Distributed Systems (SSDS)
+
+National Aeronautics and Space Administration
+
+NASA explores the unknown in air and space, innovates for the benefit of humanity, and inspires the world through discovery.
+
+Responsible NASA Official: Abigail Bowman

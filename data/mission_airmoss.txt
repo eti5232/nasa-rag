@@ -1,0 +1,86 @@
+AirMOSS
+Source: https://science.nasa.gov/mission/airmoss/
+
+Airborne Microwave Observatory of Subcanopy and Subsurface
+
+The Airborne Microwave Observatory of Subcanopy and Subsurface (AIRMOSS) mission was an aircraft campaign that measured root zone soil moisture (RZSM)—soil moisture at the level of plant roots—to help determine the amount of carbon being exchanged between plants and the atmosphere. This exchange in carbon, also called net ecosystem exchange (NEE), shows how much carbon is put into the environment compared to how much is removed.
+
+The amount of RZSM present impacts photosynthesis, respiration, and transpiration rates. Consequently, knowing the RZSM is important for calculating atmospheric carbon since photosynthesis pulls carbon dioxide (CO 2 ) out of the atmosphere and converts it to sugars in the plant while respiration converts the sugars in the plant back into energy releasing CO 2 . The amount of soil moisture can change whether an area is uptaking CO 2 from the atmosphere or is a net source of CO 2 to the atmosphere.
+
+As critical as RZSM measurements are to studies of climate, historically they have not been widespread.  Most were localized, point-scale measurements obtained at flux tower sites.  These data could be used to define the functional relationships between carbon fluxes and ecosystem parameters (e.g. vegetation cover and soil moisture) – but they could not be used to meaningfully scale-up these relationships to the grid cell of a regional model (50 km), let alone the larger North American continental scale.
+
+NASA selected AirMOSS as one of its first Earth Venture Suborbital missions, changed this. The investigation sought to:
+
+Quantify local-, regional-, and continental-scale heterogeneities of RZSM in North America;
+
+Quantify how RZSM controls ecosystem carbon fluxes at local, regional, and continental scales; and
+
+Quantify how much estimates of North American NEE improve when accurate information on both the mean and variance of RZSM is available.
+
+AirMOSS flights took place from 2012–2015, with the goal of observing soil moisture over diverse North American climatic regions, understanding the impact of variations in soil moisture on how the atmosphere exchanges carbon with land, and applying the data collected to reduce uncertainty of carbon exchanges to the continental scale of North America. AirMOSS provided the first temporally and spatially sustained direct observations of RZSM data sets for quantifying its control over carbon fluxes in North America.
+
+AirMOSS campaigns took place 2–3 times a year over most sites, with flights taking place at least three days over a 10–15 day period. This cadence allowed scientists to measure the changes in RZSM and carbon exchange between different seasons. The same campaigns were repeated each year of the three-year mission. This repetition allowed scientists to measure moisture as it moves through vegetation and evaporated from aerial parts, e.g., leaves, stems and flowers, over a shorter time scale. Observation of RZSM variations at these smaller time scales were applied to the data collected annually in order to reduce significant differences in NEE over the seasons.
+
+AirMOSS flights took place primarily on a Gulfstream-III (G-III) aircraft carrying the P-band Synthetic Aperture Radar (SAR). This aircraft enabled high-altitude, repeated mapping of North American habitats for soil moisture and carbon data. A Beechcraft Duchess (ALAR) obtained simultaneous in-situ atmospheric measurements.
+
+P–Band Radar. A fully polarimetric, ultra-high frequency (UHF) SAR that flies on the G-III aircraft and operates in the 280-440 MHz range allowing it to penetrate vegetation canopies and estimate soil moisture up to 1.2 meters deep.
+
+Airborne Laboratory for Atmospheric Research (ALAR). Consisted of several instruments mounted on Beechcraft Duchess aircraft used for in-situ atmospheric measurements.  Instruments included: Best Air Turbulence (BAT) Probe: Mounted on the ALAR nose to measure 3D winds and turbulence. Picarro Gas Analyzer: A Greenhouse Gas (GHG) spectrometer for measuring atmospheric Spectral Radiometer: Often used for surface reflectance measurements.
+
+Best Air Turbulence (BAT) Probe: Mounted on the ALAR nose to measure 3D winds and turbulence.
+
+Picarro Gas Analyzer: A Greenhouse Gas (GHG) spectrometer for measuring atmospheric
+
+Spectral Radiometer: Often used for surface reflectance measurements.
+
+In-situ Ground Sensors: Installed to validate the radar data, these include: Soil Moisture Probes (Decagon 5-TE/5-TM). Used for measuring volumetric water content, temperature, and electrical conductivity. Infrared Thermometers (IRT): To measure surface skin temperature. Rain Gauges: To record precipitation. FLUXNET Meteorological Towers: Used to measure fluxes of carbon dioxide, methane, and water vapor.
+
+Soil Moisture Probes (Decagon 5-TE/5-TM). Used for measuring volumetric water content, temperature, and electrical conductivity.
+
+Infrared Thermometers (IRT): To measure surface skin temperature.
+
+FLUXNET Meteorological Towers: Used to measure fluxes of carbon dioxide, methane, and water vapor.
+
+After the AirMOSS mission was completed, the P-band radar became part of the UAVSAR instrument suite. It is still flown regularly, studying soil moisture, permafrost, landslides, and other applications. P-band radar data are available through UAVSAR's data search.
+
+AirMOSS data products are publicly available through Earthdata Search .
+
+Burgin, M., D. Clewley, R.Lucas, and M. Moghaddam. "A Generalized Radar Backscattering Model Based on Wave Theory for Multilayer Multispecies Vegetation." IEEE Transactions on Geoscience and Remote Sensing, Volume: 49 , Issue: 12 , Part: 1 DOI: 10.1109/TGRS.2011.2172949 Publication Year: 2011 , Page(s): 4832 - 4845
+
+Konings, A.G.; Entekhabi, D.; Moghaddam, M.; Saatchi, S.S., "The Effect of Variable Soil Moisture Profiles on P-Band Backscatter," IEEE Transactions on Geoscience and Remote Sensing, vol.52, no.10, pp.6315,6325, Oct. 2014. doi: 10.1109/TGRS.2013.2296035
+
+My-Linh Truong-LoI ; Saatchi, S. ; Jaruwatanadilok, S. "Soil Moisture Estimation Under Tropical Forests Using UHF Radar Polarimetry" , Geoscience and Remote Sensing, IEEE Transactions on Volume: 53 , Issue: 4 DOI: 10.1109/TGRS.2014.2346656 Publication Year: 2015 , Page(s): 1718 - 1727
+
+Tabatabaeenejad, A., Burgin, M., Xueyang Duan Moghaddam, M. (2015). P-Band Radar Retrieval of Subsurface Soil Moisture Profile as a Second-Order Polynomial: First AirMOSS Results. IEEE Transactions on Geoscience and Remote Sensing 53, 645-658. DOI: 10.1109/TGRS.2014.2326839
+
+Tabatabaeenejad, A., Moghaddam, M. "Retrieval of Surface and Deep Soil Moisture and Effect of Moisture Profile on Inversion Accuracy." IEEE Geoscience and Remote Sensing Letters, vol. 8, no. 3, pp. 477-481, May 2011.
+
+Tobin, K.J., Crow, W.T. & Bennett, M.E. (2022). Root Zone Soil Moisture Comparisons: AirMOSS, SMERGE, and SMAP. IEEE Geoscience and Remote Sensing Letters 19, 1–5. DOI: https://doi.org/10.1109/LGRS.2021.3085432
+
+Touzi, R., Zhang, Y., Wilson, P., Choe, B. H., Fobert, M. A., Hong, G., Moghaddam, M. (2024). Investigation of Polarimetric L-band ALOS2 and UAVSAR, and P-band AIRMOSS for Permafrost Characterization along the Inuvik-Tuktoyaktuk Highway. 2024 IEEE International Geoscience and Remote Sensing Symposium (IGARSS), Athens, Greece (pp. 2799-2802). DOI: https://doi.org/10.1109/IGARSS53475.2024.10641854
+
+B.D. Allen, S.A. Braun, J.H. Crawford, E.J. Jenson, C.E. Miller, M. Moghaddam, H. Maring "Proposed Investigations from NASA's Earth Venture-1 (EV-1) Airborne Science Selections." IGARSS 2010, Honolulu, HI, 25-30 Jul 2010. Pages 2575-2578.
+
+Moghaddam, M., et al. (13 authors). "EV-1 Airborne Microwave Observatory of Subcanopy and Subsurface (AirMOSS) Mission Status" NASA Carbon Cycle and Ecosystems Joint Science Workshop, Alexandria, VA, Oct 2011
+
+Freeman, A., et al., (13 authors). "EV-1 Airborne Microwave Observatory of Subcanopy and Subsurface (AirMOSS) Investigation." AGU Chapman Conference on Remote Sensing of the Terrestrial Water Cycle, Feb 2012, Kona, HI. Pages 62-63
+
+A.H. Chau, E. Chapin, B. Heavy, S. Hensley, Y. Lou, R. Machuzak, R. Muellershoen, K.C. Wang, R. van Schilfgaarde, A. Ceniceros, M. Moghaddam "AirMOSS P-band SAR Calibration".
+
+E. Chapin, A. Chau, J. Chen, B. Heavey, S. Hensley, Y. Lou, R. Machuzak, and M. Moghaddam "AirMOSS: An Airborne P-band SAR to Measure Root-Zone Soil Moisture." Radar Conference (RADAR), IEEE, Atlanta, GA, 7-11 May 2012. Pages 693-698.
+
+My-Linh Truong-Loi ; Saatchi, S. ; Jaruwatanadilok, S. "A parameterized inversion model for soil moisture and biomass from polarimetric backscattering coefficients", Geoscience and Remote Sensing Symposium (IGARSS), 2012 IEEE International DOI: 10.1109/IGARSS.2012.6352452 Publication Year: 2012 , Page(s): 5145 - 5148
+
+Burgin, M. ; Tabatabaeenejad, A. ; Moghaddam, M. "A generalized radar scattering model for multispecies forests with multilayer subsurface soil", Geoscience and Remote Sensing Symposium (IGARSS), 2012 IEEE International DOI: 10.1109/IGARSS.2012.6352287 Publication Year: 2012 , Page(s): 5817 - 5819
+
+Moghaddam, M. ; Tabatabaeenejad, A. ; Burgin, M. ; Xueyang Duan "Advances in radar forward and inverse scattering models of subsurface and subcanopy soil moisture and their role for the AirMOSS mission" , Geoscience and Remote Sensing Symposium (IGARSS), 2012 IEEE International DOI: 10.1109/IGARSS.2012.6351307 Publication Year: 2012 , Page(s): 1274 - 1277
+
+Tabatabaeenejad, A. ; Burgin, M. ; Xueyang Duan ; Moghaddam, M. "Airborne Microwave Observatory of Subcanopy and Subsurface radar retrieval of root zone soil moisture: Preliminary results" , Radar Conference (RADAR), 2013 IEEE DOI: 10.1109/RADAR.2013.6586082 Publication Year: 2013 , Page(s): 1 - 4
+
+Harcke, L.J.; Le, C.T.-C., "AirMOSS P-band RF interference experience," Radar Conference, 2014 IEEE , vol., no., pp.0761,0764, 19-23 May 2014 doi: 10.1109/RADAR.2014.6875691
+
+NASA Earth Science helps Americans respond to challenges and societal needs — such as wildland fires, hurricanes, and water supplies…
+
+In order to study the Earth as a whole system and understand how it is changing, NASA develops and supports…
+
+Open access to NASA’s archive of Earth science data

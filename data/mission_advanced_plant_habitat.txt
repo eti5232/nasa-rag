@@ -1,0 +1,38 @@
+Advanced Plant Habitat
+Source: https://science.nasa.gov/mission/advanced-plant-habitat/
+
+The Advanced Plant Habitat is the largest, fully automated plant growth research facility used to conduct plant bioscience research on the International Space Station (ISS).
+
+Conducting plant bioscience research aboard the International Space Station
+
+The Advanced Plant Habitat (APH) is the largest, fully automated plant growth research facility that is used to conduct plant bioscience research on the International Space Station (ISS). It occupies the lower half of the EXpedite the PRocessing of Experiments to Space Station (EXPRESS) Rack and one powered International Sub-rack Interface Standard (ISIS) drawer, providing a fully enclosed, closed-loop plant life support system with an environmentally controlled growth chamber designed for conducting both fundamental and applied plant research during experiments extending up to 135 days. The system requires minimal crew involvement to install the science, add water, and other maintenance activities.
+
+In order to thrive in deep space, there is a need for new technologies in space crop production and food safety which will supplement the space diet with fresh, nutritious crops during space station, cislunar, lunar and eventually Mars missions.
+
+Currently, spaceflight plant research is conducted in plant chambers designed to operate in microgravity. Previous plant growth systems were limited by small growth areas available for crop production. In order to overcome remaining challenges in spaceflight plant research, larger plant growth systems were required.
+
+NASA developed two new plant research facilities, Veggie and the APH, for conducting spaceflight plant research on station as recommended by the National Research Council Decadal Survey Study “Recapturing a Future for Space Exploration: Life and Physical Sciences Research for a New Era.” Both these facilities have larger plant growth areas and are designed for studying crop production, plant-to-plant interactions, and human-plant-microbial ecosystems using large plants in microgravity.
+
+Future plant research conducted in these research facilities will help enable exploration by improving our understanding of how plants, their associated microbiomes in leaves and roots, and how they grow in the spaceflight environment. This knowledge is essential for developing suitable countermeasures to mitigate potential problems of crop production, water recycling and atmosphere revitalization needed for supporting sustainable and long-term human colonies in space.
+
+APH seeks to further our understanding of plant biology and crop growth in space. The variety of experiments flown use the APH facility test the genetic and epigenetic effects of spaceflight, plant metabolism, factors leading to crop flavor, and the effectiveness of APH hardware to grow plants for human consumption in space. Experience gained cultivating crops with APH will inform deep space missions requiring more sustainable and nutritional food sources.
+
+The primary purpose of APH is to improve our understanding of plant growth in space. However, the findings from these investigations could provide better understanding of plant biology with relevance to generating increased agricultural yields, enhanced flavor, or more stable and easily cultivated crops.
+
+An Integrated Omics Guided Approach to Lignification and Gravitational Responses: The Final Frontier (Plant Habitat-01) - Comprehensively compared differences in genetics, metabolism, photosynthesis and gravity sensing between plants grown in space and on Earth.
+
+Assessment of Nutritional Value and growth Parameters of Space-grown Plants (Plant Habitat-02) - Measured the metabolic and physiological responses of radishes grown in the Advanced Plant Habitat facility and identified the effects of the space environment and culture conditions on metabolite accumulation, flavor, enzyme activity, mineral uptake and generation time.
+
+The Epigenetic Adaptation to the Spaceflight Environment - Accumulated Genomic Change Induced by Generations in Space (Plant Habitat-03) - Assesses whether epigenetic adaptations in one generation of plants grown in space can transfer to the next generation.
+
+Microgravity Growth of New Mexico Hatch Green Chile as a Technical Display of Advanced Plant Habitat’s Capabilities (Plant Habitat-04)
+
+Effect of Spaceflight and Simulated Microgravity on Plant Defense Responses (Plant Habitat-06)
+
+Giving Roots and Shoots Their Space: The Advanced Plant Habitat
+
+Surviving Space: Extreme Plant Adaptation
+
+NASA Harvests Lettuce for Space Station Study
+
+NASA Invites Public to Engage with Next SpaceX Cargo Launch to Station

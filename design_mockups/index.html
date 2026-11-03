@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perihelion · מסכי דמה (עיצוב חלל)</title>
+<style>
+:root{
+  --bg:#04060f; --ink:#070b1c; --panel:#0a1030; --panel-2:#0e1640; --line:rgba(140,160,255,.14); --line-2:rgba(140,160,255,.26);
+  --text:#e9edfb; --muted:#9aa6cc; --faint:#65719b;
+  --cyan:#5fd4ff; --blue:#6f8cff; --violet:#8b7bff; --red:#ff5a45; --green:#41e0a0;
+  --ui:"Segoe UI",system-ui,-apple-system,Arial,sans-serif; --mono:"Cascadia Mono",Consolas,Menlo,monospace;
+  --r:12px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#020309;color:var(--text);font-family:var(--ui)}
+button{font-family:inherit;cursor:pointer}
+
+/* ===== מציג הדמה (לא חלק מהעיצוב) ===== */
+.viewer{position:sticky;top:0;z-index:100;background:#020309ee;backdrop-filter:blur(6px);border-bottom:1px solid #141a38;padding:10px 16px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.viewer b{font-size:.76rem;color:#7a86ad;margin-inline-end:6px}
+.viewer button{background:transparent;color:#9aa6cc;border:1px solid #1b2347;border-radius:999px;padding:5px 12px;font-size:.8rem}
+.viewer button:hover{color:#fff;border-color:#3a4a85}
+.viewer button.on{background:rgba(95,212,255,.12);border-color:var(--cyan);color:#d6f3ff}
+.viewer .sep{width:1px;height:20px;background:#1b2347;margin:0 6px}
+.note{max-width:1280px;margin:16px auto 10px;padding:0 16px;font-size:.8rem;color:#7a86ad;line-height:1.7}
+.note b{color:#c9d2ee}
+.stage{padding:0 16px 70px;display:flex;justify-content:center}
+.device{width:1280px;max-width:100%;container-type:inline-size;border:1px solid #1a2147;border-radius:14px;overflow:hidden;position:relative;background:var(--bg);transition:width .25s}
+.device.tablet{width:820px}.device.mobile{width:390px}
+.ribbon{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);z-index:30;pointer-events:none;font:10px var(--mono);letter-spacing:.14em;color:#ffd479;border:1px dashed #ffd47966;background:#ffd47912;border-radius:4px;padding:3px 8px;direction:ltr}
+.screen{display:none}.screen.on{display:block}
+
+/* ===== האפליקציה ===== */
+.app{display:grid;grid-template-columns:272px 1fr;height:780px;position:relative;background:var(--bg)}
+.bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.bg .photo{position:absolute;inset:-4%;background-size:cover;background-position:center;opacity:.72;filter:saturate(1.05);animation:drift 60s ease-in-out infinite alternate}
+.bg:after{content:"";position:absolute;inset:0;background:
+  radial-gradient(900px 520px at 70% 8%,rgba(111,140,255,.16),transparent 62%),
+  linear-gradient(180deg,rgba(4,6,15,.55) 0%,rgba(4,6,15,.82) 52%,rgba(4,6,15,.96) 100%)}
+.stars{position:absolute;inset:0;z-index:1;pointer-events:none}
+.stars i{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.5;animation:tw 4s ease-in-out infinite}
+@keyframes tw{50%{opacity:.08}}
+@keyframes drift{to{transform:scale(1.06) translate(-1.2%,.8%)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* סרגל צד */
+.side{position:relative;z-index:5;background:linear-gradient(180deg,rgba(7,11,32,.9),rgba(5,8,22,.94));border-inline-end:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column;gap:14px;backdrop-filter:blur(8px)}
+.brand{display:flex;align-items:center;gap:11px;padding:2px 6px 8px}
+.brand .name{font:600 .92rem var(--mono);letter-spacing:.26em;direction:ltr}
+.brand .sub{font-size:.7rem;color:var(--faint);margin-top:1px}
+.newc{display:flex;align-items:center;justify-content:space-between;width:100%;padding:11px 14px;border-radius:10px;border:1px solid var(--line-2);background:rgba(111,140,255,.08);color:var(--text);font-size:.9rem;transition:all .2s}
+.newc:hover{background:rgba(111,140,255,.16);border-color:var(--blue);box-shadow:0 0 0 3px rgba(111,140,255,.12)}
+.newc kbd{font:.66rem var(--mono);border:1px solid var(--line-2);border-radius:4px;padding:1px 5px;color:var(--muted)}
+.lbl{font:.64rem var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--faint);direction:ltr;text-align:right;padding:6px 8px 2px}
+.hist{display:flex;flex-direction:column;gap:2px;overflow:auto}
+.hi{position:relative;padding:10px 12px;border-radius:9px;color:var(--muted);font-size:.86rem;line-height:1.4;cursor:pointer;transition:background .15s,color .15s}
+.hi small{display:block;font:.64rem var(--mono);color:var(--faint);margin-top:2px;direction:ltr;text-align:right}
+.hi:hover{background:rgba(255,255,255,.04);color:var(--text)}
+.hi.on{background:rgba(95,212,255,.08);color:var(--text)}
+.hi.on:before{content:"";position:absolute;inset-inline-start:0;top:9px;bottom:9px;width:2px;border-radius:2px;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+.empty-h{margin:18px 8px;padding:18px;border:1px dashed var(--line-2);border-radius:12px;text-align:center;color:var(--faint);font-size:.82rem;line-height:1.7}
+.empty-h svg{opacity:.7;margin-bottom:6px}
+.sidefoot{margin-top:auto;padding:12px 8px 2px;border-top:1px solid var(--line);font-size:.7rem;color:var(--faint);line-height:1.6}
+.sidefoot .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(65,224,160,.15);margin-inline-end:7px}
+
+/* אזור ראשי */
+.main{position:relative;z-index:4;display:flex;flex-direction:column;min-width:0}
+.topbar{display:none;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line);background:rgba(5,8,22,.7);backdrop-filter:blur(8px)}
+.burger{background:transparent;border:1px solid var(--line-2);color:var(--text);border-radius:8px;width:38px;height:38px;font-size:1.1rem}
+.scroll{flex:1;overflow:auto;padding:0 28px}
+.col{max-width:760px;margin:0 auto;width:100%}
+
+/* ===== פתיחה ===== */
+.welcome{text-align:center;padding:30px 0 0}
+.planet{position:relative;width:250px;height:250px;margin:0 auto 6px}
+.globe{position:absolute;inset:14px;border-radius:50%;overflow:hidden;box-shadow:0 0 60px rgba(95,212,255,.35);background:#02040c}
+.globe img{width:100%;height:100%;object-fit:cover;transform:scale(1.42)}
+.globe:after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:inset -26px -18px 40px rgba(0,0,10,.7)}
+.planet svg{position:absolute;inset:-34px;width:calc(100% + 68px);height:calc(100% + 68px);overflow:visible}
+.planet .orbit{fill:none;stroke:rgba(150,175,255,.28);stroke-width:1}
+.planet .orbit.d{stroke-dasharray:2 5}
+.planet .sat{animation:orb 22s linear infinite;transform-origin:50% 50%}
+@keyframes orb{to{transform:rotate(360deg)}}
+.eyebrow{font:.7rem var(--mono);letter-spacing:.3em;text-transform:uppercase;color:var(--cyan);direction:ltr;margin-top:18px}
+.welcome h1{font-size:clamp(2.2rem,6cqi,3.7rem);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin:10px 0 12px;background:linear-gradient(100deg,#fff 10%,#9fe3ff 50%,#b9a8ff 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.welcome p{color:var(--muted);font-size:1.02rem;line-height:1.8;max-width:54ch;margin:0 auto}
+.stats{display:flex;gap:10px;justify-content:center;margin:16px 0 0;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:.76rem;color:var(--muted);padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(10,16,48,.55)}
+.chip b{color:var(--text);font-weight:600}
+.qgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0 0;text-align:right}
+.q{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:var(--r);background:rgba(10,16,48,.6);min-height:128px;padding:0;cursor:pointer;transition:transform .25s,border-color .25s,box-shadow .25s;color:var(--text);text-align:right}
+.q{box-shadow:0 0 0 1px rgba(95,212,255,.04),0 8px 24px rgba(0,0,0,.35)}
+.q:hover{transform:translateY(-4px);border-color:var(--cyan);box-shadow:0 16px 40px rgba(0,0,0,.5),0 0 30px rgba(95,212,255,.22),0 0 0 3px rgba(95,212,255,.1)}
+.q .img{height:62px;background-size:cover;background-position:center;opacity:.85;border-bottom:1px solid var(--line);filter:saturate(1.1)}
+.q:hover .img{opacity:1}
+.q .t{padding:11px 14px 14px}
+.q .k{font:.6rem var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);direction:ltr;display:block;margin-bottom:5px}
+.q .x{font-size:.9rem;line-height:1.5}
+.q .go{position:absolute;inset-inline-start:10px;top:70px;font:.9rem var(--mono);color:var(--cyan);opacity:0;transition:opacity .2s}
+.q:hover .go{opacity:1}
+
+/* ===== שיחה ===== */
+.turn{padding:26px 0 8px}
+.you{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px}
+.av{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:.62rem var(--mono);letter-spacing:.05em;background:rgba(111,140,255,.16);border:1px solid var(--line-2);color:#cfd8ff}
+.you .tx{font-size:1.18rem;font-weight:600;line-height:1.5;padding-top:2px}
+.ai{display:grid;grid-template-columns:30px 1fr;gap:12px}
+.av.ai{background:radial-gradient(circle at 35% 30%,#6f8cff,#1c2a78);border-color:var(--cyan);color:#fff;box-shadow:0 0 16px rgba(95,212,255,.3)}
+.doc{min-width:0}
+.doc h2{font-size:1.25rem;font-weight:600;margin:0 0 8px;letter-spacing:-.01em}
+.doc h3{font-size:1.02rem;font-weight:600;margin:22px 0 6px;color:#fff}
+.doc p{font-size:1.02rem;line-height:1.95;color:#dde3fa;margin:0 0 12px;max-width:68ch}
+.doc ul{margin:0 0 12px;padding-inline-start:1.2em;color:#dde3fa;line-height:1.95;font-size:1.02rem}
+.doc li::marker{color:var(--cyan)}
+.cite{display:inline-grid;place-items:center;min-width:18px;height:18px;border-radius:5px;background:rgba(95,212,255,.14);border:1px solid rgba(95,212,255,.4);color:#bfeeff;font:.62rem var(--mono);vertical-align:super;margin:0 2px;cursor:pointer;transition:background .15s}
+.cite:hover{background:rgba(95,212,255,.3)}
+.pipeline{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:0 0 14px;font:.66rem var(--mono);letter-spacing:.08em;color:var(--faint);direction:ltr;justify-content:flex-end}
+.pipeline b{color:var(--cyan);font-weight:500}
+.srcs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0 12px}
+.src{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:rgba(10,16,48,.6);text-decoration:none;color:inherit;transition:border-color .2s,transform .2s}
+.src:hover{border-color:var(--cyan);transform:translateY(-2px)}
+.src .im{height:70px;background-size:cover;background-position:center;position:relative}
+.src .im em{position:absolute;top:7px;inset-inline-start:7px;font:normal .62rem var(--mono);background:rgba(4,6,15,.82);border:1px solid var(--line-2);border-radius:5px;padding:1px 6px;color:#bfeeff}
+.src .bd{padding:9px 12px 11px}
+.src .tt{font-size:.86rem;font-weight:600;line-height:1.35}
+.src .mt{display:flex;justify-content:space-between;align-items:center;margin-top:7px;font:.64rem var(--mono);color:var(--faint);direction:ltr}
+.bar{width:44px;height:3px;border-radius:3px;background:rgba(255,255,255,.1);overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.excerpt{margin:0 0 10px;padding:10px 14px;border-left:2px solid var(--cyan);background:rgba(95,212,255,.05);border-radius:0 8px 8px 0;font-size:.84rem;line-height:1.75;color:#c3cef0;direction:ltr;text-align:left}
+.acts{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:6px}
+.btn{background:transparent;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:7px 13px;font-size:.82rem;transition:all .15s}
+.btn:hover{color:var(--text);border-color:var(--line-2);background:rgba(255,255,255,.03)}
+.btn.follow{color:var(--text);background:rgba(111,140,255,.1);border-color:var(--line-2)}
+.btn.follow:hover{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(95,212,255,.1)}
+.btn.follow:before{content:"↖ ";color:var(--cyan);font-family:var(--mono)}
+.btn.pri{background:var(--red);border-color:var(--red);color:#fff;font-weight:600}
+.btn.pri:hover{background:#ff7360}
+
+/* קלט צף */
+.dock{position:relative;z-index:6;padding:8px 28px 18px}
+.input{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:10px;padding:10px 10px 10px 12px;border:1px solid var(--line-2);border-radius:16px;background:rgba(8,12,38,.82);backdrop-filter:blur(14px);box-shadow:0 18px 50px rgba(0,0,0,.55);transition:border-color .25s,box-shadow .25s}
+.input.f{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(95,212,255,.12),0 0 40px rgba(95,212,255,.18),0 18px 50px rgba(0,0,0,.55)}
+.input .ph{flex:1;color:var(--faint);font-size:1rem;padding:6px 8px}
+.input .ph.t{color:var(--text)}
+.input .hint{font:.62rem var(--mono);color:var(--faint);border:1px solid var(--line);border-radius:5px;padding:2px 6px}
+.send{width:40px;height:40px;border-radius:11px;border:0;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#031024;font-size:1.05rem;font-weight:700;box-shadow:0 0 22px rgba(95,212,255,.35);transition:transform .15s}
+.send:hover{transform:scale(1.05)}
+.send.off{background:rgba(255,255,255,.08);color:var(--faint);box-shadow:none}
+.dfoot{max-width:760px;margin:9px auto 0;text-align:center;font-size:.68rem;color:var(--faint);line-height:1.6}
+
+/* ===== חשיבה ===== */
+.think{display:grid;grid-template-columns:30px 1fr;gap:12px;padding-top:6px}
+.radar{position:relative;width:120px;height:120px;margin:2px 0 16px;border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 17px,rgba(95,212,255,.16) 18px 19px)}
+.radar:before{content:"";position:absolute;left:50%;top:50%;width:50%;height:1px;background:linear-gradient(90deg,var(--cyan),transparent);transform-origin:0 50%;animation:spin 3.2s linear infinite}
+.radar i{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(95,212,255,.5);animation:ping 2.6s ease-out infinite}
+.radar i:nth-child(2){animation-delay:.85s}.radar i:nth-child(3){animation-delay:1.7s}
+@keyframes ping{from{transform:scale(.15);opacity:.9}to{transform:scale(1);opacity:0}}
+.radar b{position:absolute;inset:55px;border-radius:50%;background:var(--cyan);box-shadow:0 0 18px var(--cyan)}
+.steps{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.st{display:flex;align-items:center;gap:11px;font-size:.9rem;color:var(--faint)}
+.st .ic{width:18px;height:18px;border-radius:50%;border:1px solid var(--line-2);display:grid;place-items:center;font-size:.62rem}
+.st.done{color:var(--muted)}.st.done .ic{background:rgba(65,224,160,.14);border-color:rgba(65,224,160,.5);color:var(--green)}
+.st.now{color:var(--text)}.st.now .ic{border-color:var(--cyan);border-top-color:transparent;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sk{height:11px;border-radius:6px;margin:11px 0;background:linear-gradient(90deg,rgba(255,255,255,.04),rgba(255,255,255,.1),rgba(255,255,255,.04));background-size:200% 100%;animation:sh 1.7s infinite}
+@keyframes sh{to{background-position:-200% 0}}
+
+/* ===== מצבים ===== */
+.card{display:grid;grid-template-columns:44px 1fr;gap:16px;padding:20px 22px;border:1px solid var(--line-2);border-radius:14px;background:rgba(10,16,48,.7);margin:6px 0 14px}
+.card .ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;border:1px solid var(--line-2);color:var(--cyan);background:rgba(95,212,255,.06);font-size:1.15rem}
+.card h3{margin:0 0 6px;font-size:1.08rem}.card p{margin:0;color:var(--muted);line-height:1.8;font-size:.94rem}
+.card.err{border-color:rgba(255,90,69,.5);background:linear-gradient(rgba(255,90,69,.06),rgba(255,90,69,.06)),rgba(10,16,48,.7)}
+.card.err .ico{color:var(--red);border-color:rgba(255,90,69,.5);background:rgba(255,90,69,.08)}
+.card.warn{border-color:rgba(255,212,121,.4)}.card.warn .ico{color:#ffd479;border-color:rgba(255,212,121,.4);background:rgba(255,212,121,.07)}
+.tgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.long-fade{position:relative}
+.loading{display:grid;place-items:center;height:100%;text-align:center}
+.loading .core{width:74px;height:74px;margin:0 auto 18px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#6f8cff,#101b66);box-shadow:0 0 0 1px var(--cyan),0 0 50px rgba(95,212,255,.45);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 1px var(--cyan),0 0 80px rgba(95,212,255,.7);transform:scale(1.05)}}
+.loading .lb{font:.72rem var(--mono);letter-spacing:.24em;color:var(--cyan);direction:ltr}
+.loading .sb{margin-top:8px;color:var(--faint);font-size:.86rem}
+
+/* ===== רספונסיבי (לפי רוחב המכשיר) ===== */
+@container (max-width: 940px){
+  .app{grid-template-columns:1fr}
+  .side{display:none}
+  .topbar{display:flex}
+  .qgrid{grid-template-columns:repeat(2,1fr)}
+  .srcs{grid-template-columns:repeat(2,1fr)}
+  .scroll{padding:0 20px}.dock{padding:8px 20px 16px}
+}
+@container (max-width: 560px){
+  .app{height:760px}
+  .scroll{padding:0 16px}.dock{padding:8px 14px 14px}
+  .qgrid{grid-template-columns:1fr}
+  .q{min-height:0;display:grid;grid-template-columns:72px 1fr}
+  .q .img{height:auto;border-bottom:0;border-inline-end:1px solid var(--line)}
+  .q .go{display:none}
+  .srcs{grid-template-columns:1fr}
+  .src{flex-direction:row}.src .im{width:84px;height:auto;flex:none}
+  .planet{width:150px;height:150px}
+  .you .tx{font-size:1.05rem}.doc p,.doc ul{font-size:.98rem}
+  .tgrid{grid-template-columns:1fr}
+  .welcome{padding-top:18px}
+  .input .hint{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="viewer" id="viewer"><b>מסכי דמה · עיצוב חלל</b><span class="ribbon" style="position:static;transform:none;pointer-events:auto">MOCK DATA · STATIC DESIGN</span></div>
+
+<div class="note" id="note"></div>
+
+<div class="stage"><div class="device" id="device">
+
+<!-- ============ 1. פתיחה ============ -->
+<section class="screen" id="s1" data-title="1 · פתיחה" data-note="<b>מסך פתיחה.</b> כדור הארץ כמרכז (תמונה אמיתית של NASA עם מסלול), רקע גלקסיה עמוק, כותרת ברורה ושישה כרטיסי שאלה כהזמנות לחקור: לכל אחד תמונה אמיתית וקטגוריה. קלט צף עם זוהר עדין. מספרי המאגר (70 ו־210) הם המספרים האמיתיים.">
+<div class="app">
+  <div class="bg"><div class="photo" style="background-image:url('https://science.nasa.gov/wp-content/uploads/2023/09/ngc5068-1-flat-final.jpg')"></div></div>
+  <div class="stars"></div>
+  <aside class="side">
+    <div class="brand"><svg width="34" height="34" viewBox="0 0 36 36" fill="none"><ellipse cx="18" cy="18" rx="16" ry="7" transform="rotate(-24 18 18)" stroke="#e9edfb" stroke-opacity=".6" stroke-width="1.2"/><circle cx="18" cy="18" r="5.2" fill="#6f8cff"/><circle cx="30.2" cy="11.4" r="2.3" fill="#5fd4ff"/></svg><div><div class="name">PERIHELION</div><div class="sub">ארכיון הידע של NASA · פרויקט עצמאי</div></div></div>
+    <button class="newc"><span>＋ שיחה חדשה</span><kbd>Ctrl K</kbd></button>
+    <div class="lbl">Recent</div>
+    <div class="empty-h"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="10" stroke="#9aa6cc" stroke-width="1.2" stroke-dasharray="2 4"/><circle cx="15" cy="15" r="2.4" fill="#5fd4ff"/></svg><br>עדיין אין שיחות.<br>השאלה הראשונה שלך תופיע כאן.</div>
+    <div class="sidefoot"><span class="dot"></span>המאגר מחובר<br>70 מסמכים · 210 קטעים</div>
+  </aside>
+  <main class="main">
+    <div class="topbar"><button class="burger">☰</button><div class="brand" style="padding:0"><div class="name">PERIHELION</div></div><span style="width:38px"></span></div>
+    <div class="scroll"><div class="col">
+      <div class="welcome">
+        <div class="planet">
+          <svg viewBox="0 0 100 100"><ellipse class="orbit" cx="50" cy="50" rx="49" ry="17" transform="rotate(-22 50 50)"/><ellipse class="orbit d" cx="50" cy="50" rx="44" ry="44"/><g class="sat"><circle cx="94" cy="50" r="1.6" fill="#5fd4ff"/></g></svg>
+          <div class="globe"><img src="https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001016/GSFC_20171208_Archive_e001016~large.jpg" alt="Earth, NASA"></div>
+        </div>
+        <div class="eyebrow">NASA Knowledge Archive</div>
+        <h1>גלו את היקום</h1>
+        <p>שאלו על משימות, חלליות וגילויים. כל תשובה נבנית ממסמכים רשמיים של NASA, והמקורות שלה גלויים לבדיקה.</p>
+        <div class="stats"><span class="chip">● <b>70</b> מסמכים</span><span class="chip"><b>210</b> קטעים מאונדקסים</span><span class="chip">מקור: nasa.gov</span><span class="chip">עברית ו־English</span></div>
+        <div class="qgrid">
+          <button class="q"><div class="img" style="background-image:url('https://science.nasa.gov/wp-content/uploads/2024/05/jwst_artist_concept_0.png')"></div><div class="go">↖</div><div class="t"><span class="k">Spacecraft</span><div class="x">מה זה טלסקופ החלל ג'יימס ווב?</div></div></button>
+          <button class="q"><div class="img" style="background-image:url('https://www.nasa.gov/wp-content/uploads/2022/12/art002e021110large.jpg')"></div><div class="go">↖</div><div class="t"><span class="k">Return to the Moon</span><div class="x">מה המטרה של תוכנית ארטמיס?</div></div></button>
+          <button class="q"><div class="img" style="background-image:url('https://assets.science.nasa.gov/content/dam/science/psd/mars/resources/detail_files/7/7668_Mars-viking-2-orbiter-global-view-partial-valles-marinares-PIA04304-full2.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg')"></div><div class="go">↖</div><div class="t"><span class="k">Planets</span><div class="x">מה ידוע על מאדים?</div></div></button>
+          <button class="q"><div class="img" style="background-image:url('https://www.nasa.gov/wp-content/uploads/2022/05/Aldrin_Apollo_11-1.jpeg')"></div><div class="go">↖</div><div class="t"><span class="k">History</span><div class="x">מה קרה באפולו 13?</div></div></button>
+          <button class="q"><div class="img" style="background-image:url('https://science.nasa.gov/wp-content/uploads/2023/12/voyager-banner-blue.jpg')"></div><div class="go">↖</div><div class="t"><span class="k">Deep space</span><div class="x">מה מיוחד בחללית וויאג'ר?</div></div></button>
+          <button class="q"><div class="img" style="background-image:url('https://assets.science.nasa.gov/content/dam/science/psd/solar/internal_resources/3814/Spacecraft_heating_up_in_Saturns_atmosphere.jpeg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg')"></div><div class="go">↖</div><div class="t"><span class="k">Missions</span><div class="x">מה גילתה חללית Cassini בשבתאי?</div></div></button>
+        </div>
+      </div>
+    </div></div>
+    <div class="dock"><div class="input f"><button class="send">↑</button><span class="ph">שאלו שאלה על היקום…</span><span class="hint">Enter</span></div>
+    <div class="dfoot">פרויקט לימודי עצמאי, לא מוצר רשמי של NASA. תמונות: NASA, מתוך nasa.gov.</div></div>
+  </main>
+</div>
+</section>
+
+<!-- ============ 2. שיחה ============ -->
+<section class="screen" id="s2" data-title="2 · תשובה ארוכה + מקורות" data-note="<b>תשובה ארוכה עם מקורות.</b> השאלה היא כותרת, והתשובה מסמך קריא ברוחב של 68 תווים, בלי בועה. ציטוטים [1] [2] בתוך הטקסט, כרטיסי מקור עם תמונה אמיתית, סוג וציון דמיון, ואפשרות לראות את הקטע המצוטט. <b>הטקסט הוא נתוני דמה</b>, והמקורות וציוניהם יגיעו מהאחזור בפועל.">
+<div class="app">
+  <div class="bg"><div class="photo" style="background-image:url('https://science.nasa.gov/wp-content/uploads/2023/09/ngc5068-1-flat-final.jpg');opacity:.3"></div></div>
+  <div class="stars"></div>
+  <aside class="side">
+    <div class="brand"><svg width="34" height="34" viewBox="0 0 36 36" fill="none"><ellipse cx="18" cy="18" rx="16" ry="7" transform="rotate(-24 18 18)" stroke="#e9edfb" stroke-opacity=".6" stroke-width="1.2"/><circle cx="18" cy="18" r="5.2" fill="#6f8cff"/><circle cx="30.2" cy="11.4" r="2.3" fill="#5fd4ff"/></svg><div><div class="name">PERIHELION</div><div class="sub">ארכיון הידע של NASA · פרויקט עצמאי</div></div></div>
+    <button class="newc"><span>＋ שיחה חדשה</span><kbd>Ctrl K</kbd></button>
+    <div class="lbl">Today</div>
+    <div class="hist"><div class="hi on">מה זה טלסקופ ג'יימס ווב?<small>12:04 · 3 שאלות</small></div><div class="hi">מה קרה באפולו 13?<small>11:20</small></div>
+    <div class="lbl" style="margin-top:8px">Yesterday</div><div class="hi">אילו מרכזים יש ל־NASA?<small>YESTERDAY</small></div><div class="hi">באיזו שנה הוקמה נאס״א?<small>YESTERDAY</small></div></div>
+    <div class="sidefoot"><span class="dot"></span>המאגר מחובר<br>70 מסמכים · 210 קטעים</div>
+  </aside>
+  <main class="main">
+    <div class="topbar"><button class="burger">☰</button><div class="brand" style="padding:0"><div class="name">PERIHELION</div></div><span style="width:38px"></span></div>
+    <div class="scroll"><div class="col">
+      <div class="turn">
+        <div class="you"><div class="av">YOU</div><div class="tx">מה זה טלסקופ החלל ג'יימס ווב, ומה הוא בודק?</div></div>
+        <div class="ai"><div class="av ai">P</div>
+          <div class="doc">
+            <div class="pipeline"><span>RETRIEVED <b>6</b> PASSAGES</span><span>·</span><span><b>3</b> DOCUMENTS</span><span>·</span><span>ANSWERED IN HEBREW</span></div>
+            <h2>טלסקופ החלל ג'יימס ווב</h2>
+            <p>הטלסקופ הוא המצפה הגדול, החזק והמורכב ביותר ששוגר אי פעם לחלל<span class="cite">1</span>. זו משימה משותפת של NASA, ESA ו־CSA, והיא משרתת אלפי אסטרונומים ברחבי העולם.</p>
+            <h3>מה הוא בודק</h3>
+            <ul><li>את כל השלבים בהיסטוריה של היקום, מהזוהר הראשון אחרי המפץ הגדול<span class="cite">1</span></li><li>את היווצרותם של גלקסיות, כוכבים וכוכבי לכת</li><li>את התפתחותה של מערכת השמש שלנו<span class="cite">2</span></li></ul>
+            <h3>היכן הוא נמצא</h3>
+            <p>הוא מקיף את השמש במרחק של כ־1.5 מיליון קילומטרים מכדור הארץ, בנקודת לגראנז' השנייה (L2)<span class="cite">1</span>.</p>
+            <div class="srcs">
+              <a class="src"><div class="im" style="background-image:url('https://science.nasa.gov/wp-content/uploads/2024/05/jwst_artist_concept_0.png')"><em>01</em></div><div class="bd"><div class="tt">James Webb Space Telescope</div><div class="mt"><span>MISSION PAGE</span><span class="bar"><i style="width:58%"></i></span><span>0.58</span></div></div></a>
+              <a class="src"><div class="im" style="background-image:url('https://science.nasa.gov/wp-content/uploads/2023/09/ngc5068-1-flat-final.jpg')"><em>02</em></div><div class="bd"><div class="tt">Welcome to the Universe</div><div class="mt"><span>SCIENCE TOPIC</span><span class="bar"><i style="width:49%"></i></span><span>0.49</span></div></div></a>
+              <a class="src"><div class="im" style="background-image:url('https://science.nasa.gov/wp-content/uploads/2023/09/ngc5068-1-flat-final.jpg');filter:hue-rotate(40deg)"><em>03</em></div><div class="bd"><div class="tt">NASA Astrophysics</div><div class="mt"><span>SCIENCE TOPIC</span><span class="bar"><i style="width:46%"></i></span><span>0.46</span></div></div></a>
+            </div>
+            <div class="excerpt">[mock] The James Webb Space Telescope is the largest, most powerful, and most complex observatory ever sent to space… <span style="color:var(--faint)">— מקור 01, קטע 2 מתוך 3</span></div>
+            <div class="acts"><button class="btn">העתקת התשובה</button><button class="btn">פתיחת המקור המקורי ↗</button><button class="btn follow">איך הוא שונה מטלסקופ האבל?</button><button class="btn follow">מה זה נקודת L2?</button></div>
+          </div>
+        </div>
+      </div>
+    </div></div>
+    <div class="dock"><div class="input"><button class="send">↑</button><span class="ph">שאלו שאלת המשך…</span><span class="hint">Enter</span></div><div class="dfoot">תשובות נוצרות על ידי מודל שפה ועלולות להכיל שגיאות. מומלץ לאמת במקורות.</div></div>
+  </main>
+</div>
+</section>
+
+<!-- ============ 3. חשיבה ============ -->
+<section class="screen" id="s3" data-title="3 · מחפש ומנסח" data-note="<b>שליחה, אחזור ויצירה.</b> אנימציה בהשראת קליטת אות מהחלל, ושלבי העבודה האמיתיים של המערכת: הבנת השאלה ← אחזור קטעים ← ניסוח. שלד אפור מחזיק את מקום התשובה, כדי שהמסך לא יקפוץ. מכבד prefers-reduced-motion.">
+<div class="app">
+  <div class="bg"><div class="photo" style="background-image:url('https://science.nasa.gov/wp-content/uploads/2023/09/ngc5068-1-flat-final.jpg');opacity:.3"></div></div><div class="stars"></div>
+  <aside class="side"><div class="brand"><svg width="34" height="34" viewBox="0 0 36 36" fill="none"><ellipse cx="18" cy="18" rx="16" ry="7" transform="rotate(-24 18 18)" stroke="#e9edfb" stroke-opacity=".6" stroke-width="1.2"/><circle cx="18" cy="18" r="5.2" fill="#6f8cff"/><circle cx="30.2" cy="11.4" r="2.3" fill="#5fd4ff"/></svg><div><div class="name">PERIHELION</div><div class="sub">ארכיון הידע של NASA · פרויקט עצמאי</div></div></div><button class="newc"><span>＋ שיחה חדשה</span><kbd>Ctrl K</kbd></button><div class="lbl">Today</div><div class="hist"><div class="hi on">מה קרה באפולו 13?<small>NOW</small></div></div><div class="sidefoot"><span class="dot"></span>המאגר מחובר</div></aside>
+  <main class="main"><div class="topbar"><button class="burger">☰</button><div class="brand" style="padding:0"><div class="name">PERIHELION</div></div><span style="width:38px"></span></div>
+    <div class="scroll"><div class="col"><div class="turn">
+      <div class="you"><div class="av">YOU</div><div class="tx">מה קרה באפולו 13?</div></div>
+      <div class="think"><div class="av ai">P</div><div>
+        <div class="radar"><i></i><i></i><i></i><b></b></div>
+        <div class="steps">
+          <div class="st done"><span class="ic">✓</span>הבנת השאלה</div>
+          <div class="st done"><span class="ic">✓</span>נמצאו 6 קטעים מתוך 4 מסמכים</div>
+          <div class="st now"><span class="ic"></span>מנסח תשובה על בסיס הקטעים שנמצאו…</div>
+        </div>
+        <div class="sk" style="width:92%"></div><div class="sk" style="width:80%"></div><div class="sk" style="width:64%"></div>
+      </div></div>
+    </div></div></div>
+    <div class="dock"><div class="input"><button class="send off">■</button><span class="ph">ממתין לתשובה…</span></div></div>
+  </main></div>
+</section>
+
+<!-- ============ 4. אין מידע ============ -->
+<section class="screen" id="s4" data-title="4 · אין מידע" data-note="<b>אין במאגר מספיק ראיות.</b> מצב מרכזי ב־RAG: אומרים בבירור שאין תשובה, לא מציגים מקורות כאילו תמכו בה, ומציעים להמשיך. הקטעים הקרובים ביותר זמינים לבדיקה, מסומנים כלא רלוונטיים. (שאלות כמו 'חורים שחורים' ו'אירופה' עשויות להגיע למצב הזה, כי הן לא מכוסות כרגע ב־70 המסמכים.)">
+<div class="app">
+  <div class="bg"><div class="photo" style="background-image:url('https://science.nasa.gov/wp-content/uploads/2023/09/ngc5068-1-flat-final.jpg');opacity:.3"></div></div><div class="stars"></div>
+  <aside class="side"><div class="brand"><svg width="34" height="34" viewBox="0 0 36 36" fill="none"><ellipse cx="18" cy="18" rx="16" ry="7" transform="rotate(-24 18 18)" stroke="#e9edfb" stroke-opacity=".6" stroke-width="1.2"/><circle cx="18" cy="18" r="5.2" fill="#6f8cff"/><circle cx="30.2" cy="11.4" r="2.3" fill="#5fd4ff"/></svg><div><div class="name">PERIHELION</div><div class="sub">ארכיון הידע של NASA · פרויקט עצמאי</div></div></div><button class="newc"><span>＋ שיחה חדשה</span><kbd>Ctrl K</kbd></button><div class="lbl">Today</div><div class="hist"><div class="hi on">האם יש חיים באירופה?<small>NOW</small></div></div><div class="sidefoot"><span class="dot"></span>המאגר מחובר</div></aside>
+  <main class="main"><div class="topbar"><button class="burger">☰</button><div class="brand" style="padding:0"><div class="name">PERIHELION</div></div><span style="width:38px"></span></div>
+    <div class="scroll"><div class="col"><div class="turn">
+      <div class="you"><div class="av">YOU</div><div class="tx">האם יכולים להיות חיים על אירופה, הירח של צדק?</div></div>
+      <div class="ai"><div class="av ai">P</div><div class="doc">
+        <div class="card"><div class="ico">⌀</div><div><h3>אין במאגר מספיק ראיות כדי לענות</h3><p>חיפשנו בקטעים המאונדקסים ולא מצאנו מידע שעונה על השאלה. במקום לנחש, המערכת מעדיפה לומר זאת.</p><div class="acts" style="margin-top:14px"><button class="btn follow">מה גילתה חללית Cassini בשבתאי?</button><button class="btn follow">מה ידוע על מאדים?</button><button class="btn">מה יש במאגר? ←</button></div></div></div>
+        <details style="color:var(--faint);font-size:.84rem"><summary style="cursor:pointer;padding:6px 2px">הקטעים הקרובים ביותר שנבדקו (לא עונים על השאלה)</summary><div class="srcs"><a class="src"><div class="im" style="background-image:url('https://assets.science.nasa.gov/content/dam/science/cds/general/images/2024/03/pia21770large.jpg/jcr:content/renditions/cq5dam.web.1280.1280.jpeg');filter:grayscale(.7)"><em>?</em></div><div class="bd"><div class="tt">Juno</div><div class="mt"><span>MISSION PAGE</span><span class="bar"><i style="width:40%;background:var(--faint)"></i></span><span>0.40</span></div></div></a></div></details>
+      </div></div>
+    </div></div></div>
+    <div class="dock"><div class="input"><button class="send">↑</button><span class="ph">שאלו שאלה אחרת…</span></div></div>
+  </main></div>
+</section>
+
+<!-- ============ 5. שגיאות ============ -->
+<section class="screen" id="s5" data-title="5 · שגיאה וחיבור" data-note="<b>שגיאות.</b> שני מקרים אמיתיים שנתקלנו בהם: מכסת Gemini שנגמרה, ואין חיבור לרשת. כל אחד עם הסבר אנושי, פעולה ברורה ('נסו שוב'), והשאלה נשמרת. שגיאה בצבע אדום מרוסן, אזהרת חיבור בענבר.">
+<div class="app">
+  <div class="bg"><div class="photo" style="background-image:url('https://science.nasa.gov/wp-content/uploads/2023/09/ngc5068-1-flat-final.jpg');opacity:.3"></div></div><div class="stars"></div>
+  <aside class="side"><div class="brand"><svg width="34" height="34" viewBox="0 0 36 36" fill="none"><ellipse cx="18" cy="18" rx="16" ry="7" transform="rotate(-24 18 18)" stroke="#e9edfb" stroke-opacity=".6" stroke-width="1.2"/><circle cx="18" cy="18" r="5.2" fill="#6f8cff"/><circle cx="30.2" cy="11.4" r="2.3" fill="#5fd4ff"/></svg><div><div class="name">PERIHELION</div><div class="sub">ארכיון הידע של NASA · פרויקט עצמאי</div></div></div><button class="newc"><span>＋ שיחה חדשה</span><kbd>Ctrl K</kbd></button><div class="lbl">Today</div><div class="hist"><div class="hi on">מה זה טלסקופ ג'יימס ווב?<small>NOW</small></div></div><div class="sidefoot"><span class="dot" style="background:#ffd479;box-shadow:0 0 0 3px rgba(255,212,121,.15)"></span>שירות הניסוח עמוס</div></aside>
+  <main class="main"><div class="topbar"><button class="burger">☰</button><div class="brand" style="padding:0"><div class="name">PERIHELION</div></div><span style="width:38px"></span></div>
+    <div class="scroll"><div class="col"><div class="turn">
+      <div class="you"><div class="av">YOU</div><div class="tx">מה זה טלסקופ החלל ג'יימס ווב?</div></div>
+      <div class="ai"><div class="av ai">P</div><div class="doc">
+        <div class="card err"><div class="ico">!</div><div><h3>הגענו למגבלת השימוש החינמית</h3><p>כל מודלי השפה הזמינים הגיעו כרגע למכסה. המכסות מתאפסות בדרך כלל תוך דקה עד כמה דקות. השאלה נשמרה.</p><div class="acts" style="margin-top:14px"><button class="btn pri">נסו שוב</button><button class="btn">פרטים טכניים ▾</button></div></div></div>
+        <div class="card warn"><div class="ico">⌁</div><div><h3>אין חיבור לשרת</h3><p>לא הצלחנו להגיע לשירות. בדקו את החיבור לאינטרנט. אם הרשת שלכם מסננת אתרים, ייתכן שהכתובת נחסמה.</p><div class="acts" style="margin-top:14px"><button class="btn pri">נסו שוב</button></div></div></div>
+      </div></div>
+    </div></div></div>
+    <div class="dock"><div class="input"><button class="send">↑</button><span class="ph">שאלו שאלה…</span></div></div>
+  </main></div>
+</section>
+
+<!-- ============ 6. היסטוריה ============ -->
+<section class="screen" id="s6" data-title="6 · היסטוריה" data-note="<b>היסטוריית שיחות.</b> מימין (בשפה עברית): סרגל עם שיחות לפי יום, שיחה פעילה מסומנת בקו זוהר, וחיפוש. משמאל: חיפוש בלי תוצאות. <b>לא בטוח שהיסטוריה נתמכת בגרסה הראשונה</b> ב־Chainlit (תלוי בהגדרות), ולכן זה מסך לבדיקת כדאיות.">
+<div class="app" style="grid-template-columns:1fr 1fr">
+  <div class="bg"><div class="photo" style="background-image:url('https://science.nasa.gov/wp-content/uploads/2023/09/ngc5068-1-flat-final.jpg');opacity:.25"></div></div><div class="stars"></div>
+  <aside class="side" style="display:flex;border-inline-end:1px solid var(--line)">
+    <div class="brand"><svg width="34" height="34" viewBox="0 0 36 36" fill="none"><ellipse cx="18" cy="18" rx="16" ry="7" transform="rotate(-24 18 18)" stroke="#e9edfb" stroke-opacity=".6" stroke-width="1.2"/><circle cx="18" cy="18" r="5.2" fill="#6f8cff"/><circle cx="30.2" cy="11.4" r="2.3" fill="#5fd4ff"/></svg><div><div class="name">PERIHELION</div></div></div>
+    <button class="newc"><span>＋ שיחה חדשה</span><kbd>Ctrl K</kbd></button>
+    <div class="input" style="padding:8px 12px;border-radius:10px;box-shadow:none;margin:0"><span class="ph" style="font-size:.86rem">🔍 חיפוש בשיחות…</span></div>
+    <div class="lbl">Today</div>
+    <div class="hist"><div class="hi on">מה זה טלסקופ ג'יימס ווב?<small>12:04 · 3 שאלות</small></div><div class="hi">מה קרה באפולו 13?<small>11:20</small></div>
+    <div class="lbl" style="margin-top:8px">Last 7 days</div><div class="hi">אילו מרכזים יש ל־NASA?<small>2 DAYS AGO</small></div><div class="hi">באיזו שנה הוקמה נאס״א?<small>3 DAYS AGO</small></div><div class="hi">מי היה האדם הראשון על הירח?<small>5 DAYS AGO</small></div></div>
+  </aside>
+  <main class="main" style="padding:18px 14px;gap:12px;border-inline-start:1px solid var(--line)">
+    <div class="brand"><div class="name" style="font-size:.8rem">SEARCH</div></div>
+    <div class="input f" style="padding:9px 14px;border-radius:10px;width:100%;margin:0"><span class="ph t" style="font-size:.9rem">🔍 סופרנובה</span></div>
+    <div class="empty-h"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="10" stroke="#9aa6cc" stroke-width="1.2" stroke-dasharray="2 4"/><circle cx="15" cy="15" r="2.4" fill="#5fd4ff"/></svg><br>לא נמצאו שיחות שמתאימות ל"סופרנובה".<br>נסו מילה אחרת, או התחילו שיחה חדשה.</div>
+  </main>
+</div>
+</section>
+
+<!-- ============ 7. טעינה ראשונית ============ -->
+<section class="screen" id="s7" data-title="7 · טעינה ראשונית" data-note="<b>טעינה ראשונית.</b> בזמן שהמאגר והמודלים נטענים (כמה שניות), במקום מסך ריק: ליבה כחולה פועמת והודעת מצב קצרה.">
+<div class="app" style="grid-template-columns:1fr">
+  <div class="bg"><div class="photo" style="background-image:url('https://science.nasa.gov/wp-content/uploads/2023/09/ngc5068-1-flat-final.jpg');opacity:.4"></div></div><div class="stars"></div>
+  <main class="main"><div class="loading"><div><div class="core"></div><div class="lb">ESTABLISHING LINK</div><div class="sb">טוען את ארכיון הידע…</div></div></div></main>
+</div>
+</section>
+
+</div></div>
+
+<script>
+// כוכבים (קישוט בלבד)
+function addStars(){
+  document.querySelectorAll('.stars').forEach(s=>{
+    if(s.childElementCount) return;
+    for(let i=0;i<70;i++){
+      const e=document.createElement('i');
+      e.style.left=Math.random()*100+'%';e.style.top=Math.random()*100+'%';
+      const z=Math.random()<.15?3:2;e.style.width=e.style.height=z+'px';
+      e.style.animationDelay=(Math.random()*4)+'s';e.style.animationDuration=(3+Math.random()*4)+'s';
+      s.appendChild(e);
+    }
+  });
+}
+addStars();
+// מציג
+const screens=[...document.querySelectorAll('.screen')], viewer=document.getElementById('viewer'), dev=document.getElementById('device'), note=document.getElementById('note');
+function show(i){
+  screens.forEach((s,j)=>s.classList.toggle('on',i===j));
+  viewer.querySelectorAll('.scr').forEach((b,j)=>b.classList.toggle('on',i===j));
+  note.innerHTML=screens[i].dataset.note||'';
+  try{history.replaceState(null,'','#'+(i+1))}catch(e){}
+}
+screens.forEach((s,i)=>{const b=document.createElement('button');b.className='scr';b.textContent=s.dataset.title;b.onclick=()=>show(i);viewer.appendChild(b)});
+const sep=document.createElement('span');sep.className='sep';viewer.appendChild(sep);
+[['מחשב','' ],['טאבלט','tablet'],['מובייל','mobile']].forEach(([t,c])=>{const b=document.createElement('button');b.textContent=t;b.dataset.dev=c;b.className='dv'+(c===''?' on':'');
+  b.onclick=()=>{dev.className='device '+c;viewer.querySelectorAll('.dv').forEach(x=>x.classList.toggle('on',x===b))};viewer.appendChild(b)});
+show(Math.max(0,Math.min(screens.length-1,(parseInt(location.hash.slice(1))||1)-1)));
+</script>
+</body>
+</html>

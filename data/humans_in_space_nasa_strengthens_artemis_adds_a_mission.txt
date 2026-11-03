@@ -1,0 +1,33 @@
+NASA Strengthens Artemis: Adds a Mission and Refines Its Overall Architecture
+Source: https://www.nasa.gov/humans-in-space/astronauts/la-nasa-refuerza-artemis-anade-una-mision-y-perfecciona-su-arquitectura-general/
+(English translation of the Spanish original page.)
+
+To achieve the national goal of landing American astronauts on the surface of the Moon and maintain U.S. superiority in exploration and discovery, NASA announced on February 27 that it will increase the frequency of its Artemis missions, standardize the configuration of the Space Launch System (SLS) rocket, and add a new mission.
+
+These plans were announced during a press conference at NASA's Kennedy Space Center in Florida, and included an update on the near-term mission, Artemis II.
+
+The update focused on the transportation systems for carrying crews to the Moon. NASA's updated architecture includes adding a new mission in 2027 to test system capabilities closer to Earth before sending astronauts to the surface of the Moon for the first time in more than 50 years, and aims to achieve one lunar mission per year thereafter. Standardizing the SLS rocket and other systems will now help NASA send astronauts to explore the lunar South Pole for the first time in 2028.
+
+The specific details for achieving this new approach, as well as other architecture updates, will be released soon, as the agency remains focused on the Artemis II mission, which is scheduled to fly around the Moon no later than April, and is verifying its capabilities to support a higher mission frequency.
+
+Artemis I: NASA successfully completed an uncrewed test flight of the SLS rocket and the Orion spacecraft in November 2022. This mission tested, for the first time, the launch of the rocket using new exploration ground systems, and evaluated the Orion systems without astronauts or the critical life support systems planned for the next mission.
+
+Artemis II: This mission will be the first crewed test flight of the SLS rocket and the Orion spacecraft. After a successful wet dress rehearsal with propellant loading in February, NASA discovered a problem with the flow of helium to the interim cryogenic propulsion stage, and returned the rocket and spacecraft to the Vehicle Assembly Building for repair. Engineers at NASA's Kennedy Space Center in Florida are currently working on the SLS rocket and the Orion spacecraft mounted on top of it to address the problem that required its removal, and teams are also using the time to replace batteries and do other work. The launch window opens in April.
+
+The crew members are NASA astronauts Reid Wiseman, Victor Glover, and Christina Koch, and CSA (Canadian Space Agency) astronaut Jeremy Hansen, who will embark on a mission of approximately 10 days that will send them around the Moon and back to Earth.
+
+Artemis III: NASA added a new demonstration mission in low Earth orbit for mid-2027 to test one or both of the commercial landers from SpaceX and Blue Origin, respectively. This mission will launch the crew aboard Orion on the SLS rocket to test the rendezvous and docking capabilities between Orion and the private commercial spacecraft that are needed to take astronauts to the Moon. This test will be carried out with one or both providers.
+
+Artemis IV: NASA continues to target the first Artemis lunar landing for early 2028, which has been the planned landing date since mid-2025. After launch, the crew will transfer to a commercial lunar lander for transport to the surface of the Moon. Lander readiness will determine which provider takes them safely to the surface and back to Orion in lunar orbit, before the crew returns home aboard Orion to splash down safely in the Pacific Ocean.
+
+Measures will be taken to standardize the SLS rocket for the Artemis IV mission. With this architectural approach, NASA is evaluating alternative options for the second stage of the rocket. The interim cryogenic propulsion stage used for the first three missions will be replaced by a new second stage, and the agency no longer plans to use the Exploration Upper Stage or Mobile Launcher 2, as the development of both has been delayed.
+
+Artemis V: Through the standardized SLS rocket configuration, NASA anticipates that the launch of this mission to the lunar surface will occur in late 2028, and from then on there will be future missions approximately once a year. NASA is also expected to begin building its lunar base on this mission.
+
+NASA continues to refine its mission architecture plans, and the agency will release more information about its lunar exploration strategy and crew assignments in the future.
+
+As part of a golden age of innovation and exploration, NASA will send Artemis astronauts on progressively more difficult missions to explore more regions of the Moon in order to achieve scientific discoveries and economic benefits, and to use our development of space programs to lay the foundations for the first crewed missions to Mars.
+
+For more information about the Artemis program, visit:
+
+https://ciencia.nasa.gov/artemis (Spanish)

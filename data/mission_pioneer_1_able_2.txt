@@ -1,0 +1,38 @@
+Able 2 (Pioneer 1)
+Source: https://science.nasa.gov/mission/pioneer-1-able-2/
+
+Able 2, later named Pioneer 1, was the first spacecraft launched by NASA. Due to a malfunction, the spacecraft never reached the Moon but did return data on the near-Earth environment.
+
+Oct. 13, 1958 : Reentered Earth's atmosphere
+
+Although the United States Air Force (USAF) actually conducted the mission, this was the first U.S. space mission technically under the aegis of the recently formed National Aeronautics and Space Administration (NASA).
+
+The spacecraft was very similar in design to the Able 1 probe and like its predecessor, built by Space Technology Laboratories (STL).
+
+The probe was designed to record micrometeoroid impacts, take magnetic field and radiation measurements, and to obtain a “facsimile image of the surface of the Moon.”
+
+During launch, the Thor second stage shut down 10 seconds early due to incorrect information from an accelerometer measuring incremental velocity.
+
+As a result, the launch vehicle had insufficient velocity for the probe to escape Earth’s gravity. An attempt to insert the spacecraft into high Earth orbit at 79,970 x 20,000 miles (128,700 × 32,200 kilometers) by using its Thiokol-built retro motor failed because internal temperatures had fallen too low for the batteries to provide adequate power.
+
+The probe did, however, reach an altitude of 71,303 miles (114,750 kilometers) by 11:42 UT on launch day, according to NASA information from February 1959. The probe verified the existence of the Van Allen Belts and returned other useful data on the boundary of the geomagnetic cavity.
+
+The probe reentered Earth's atmosphere about 43 hours after launch. Investigators later concluded that an accelerometer had mistakenly cut off the Able stage because of an incorrect setting of a valve.
+
+In a press release soon after the launch, the U.S. Department of Defense officially bestowed the name “Pioneer” to the probe, although it has often been retroactively known as Pioneer 1.
+
+The name was apparently suggested not by any NASA official but by Stephen A. Saliga, an official in charge of Air Force exhibits at Wright-Patterson Air Force Base in Dayton, Ohio, who designed a display to coincide with the launch.
+
+Siddiqi, Asif A. Beyond Earth: A Chronicle of Deep Space Exploration, 1958-2016 . NASA History Program Office, 2018.
+
+Blue Origin’s New Glenn Rocket Go for Launch!
+
+50 Years Ago: Pioneer 10 Launches to Explore Jupiter
+
+Webb is the premier observatory of the next decade, serving thousands of astronomers worldwide. It studies every phase in the…
+
+This rover and its aerial sidekick were assigned to study the geology of Mars and seek signs of ancient microbial…
+
+On a mission to “touch the Sun,” NASA's Parker Solar Probe became the first spacecraft to fly through the corona…
+
+NASA’s Juno spacecraft entered orbit around Jupiter in 2016, the first explorer to peer below the planet's dense clouds to…
