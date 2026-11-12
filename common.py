@@ -11,8 +11,10 @@ load_dotenv()
 Settings.embed_model = GoogleGenAIEmbedding(model_name="gemini-embedding-001")
 
 
+def get_collection():
+    return chromadb.PersistentClient(path="chroma_db").get_collection("nasa")
+
+
 def get_index():
-    client = chromadb.PersistentClient(path="chroma_db")
-    collection = client.get_collection("nasa")
-    vector_store = ChromaVectorStore(chroma_collection=collection)
+    vector_store = ChromaVectorStore(chroma_collection=get_collection())
     return VectorStoreIndex.from_vector_store(vector_store)

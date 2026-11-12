@@ -5,3 +5,8 @@ __pycache__/
 chroma_db_old/
 old_code/
 .files/
+PLAN.md
+DESIGN_PLAN.md
+design_mockups/
+run_tests.py
+test_results.md

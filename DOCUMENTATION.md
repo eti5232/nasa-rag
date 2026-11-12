@@ -4,7 +4,7 @@
 
 ## 1. מה המערכת עושה
 
-מקבלת שאלה בעברית או באנגלית, מחפשת במאגר של 70 מסמכים מהאתר nasa.gov את הקטעים הקרובים ביותר למשמעות השאלה, ומעבירה אותם למודל שפה (Gemini) שמנסח תשובה **רק מהם**, בשפת השאלה. מתחת לתשובה מוצגים המקורות שעליהם התבססה. כשאין במאגר מידע מתאים, המערכת אומרת זאת ולא מנחשת.
+מקבלת שאלה בעברית או באנגלית, מחפשת במאגר של 73 מסמכים מהאתר nasa.gov את הקטעים הקרובים ביותר למשמעות השאלה, ומעבירה אותם למודל שפה (Gemini) שמנסח תשובה **רק מהם**, בשפת השאלה. בצ'אט עצמו לא מוצגים המקורות (החלטה של בעלת הפרויקט); הם נשמרים רק בקוד ובדוח הבדיקות `test_results.md`. כשאין במאגר מידע מתאים, המערכת אומרת זאת ולא מנחשת.
 
 **הזרימה:**
 
@@ -13,7 +13,7 @@
   מסמכי טקסט ← Documents ← חלוקה לקטעים (Nodes) ← Embeddings (Gemini) ← Chroma (בדיסק)
 
 שאלה (בכל פעם):
-  שאלה ← Embedding לשאלה ← 8 הקטעים הקרובים ב-Chroma ← פרומפט + מודל שפה ← תשובה + מקורות + הצעות להמשך
+  שאלה ← Embedding לשאלה ← 8 הקטעים הקרובים ב-Chroma ← פרומפט + מודל שפה ← תשובה + הצעות להמשך (המקורות נשמרים בקוד ובדוח הבדיקות בלבד)
 ```
 
 **בחירות טכנולוגיות:**
@@ -24,7 +24,7 @@
 | Embeddings | `gemini-embedding-001` | רב-לשוני: שאלה בעברית מוצאת טקסט באנגלית. בדקנו: דמיון 0.756 למשפט הנכון מול 0.553 למשפט לא קשור |
 | מודל שפה | `gemini-3.1-flash-lite` | מהיר, ומכסה חינמית נדיבה יחסית |
 | מסד וקטורי | ChromaDB | נשמר בדיסק, מתאים לפרויקט קטן |
-| ממשק | Chainlit (גרסה 2.1.2) | ממשק צ'אט מוכן עם תמיכה בשלבים גלויים, מקורות וכפתורים |
+| ממשק | Chainlit (גרסה 2.1.2) | ממשק צ'אט מוכן עם תמיכה בשלבים גלויים וכפתורים |
 
 ה-Embeddings וה-LLM הם **שני מודלים נפרדים**. אין חובה שיהיו מאותו ספק, והם רק במקרה מאותה חברה.
 
@@ -378,11 +378,17 @@ prompt = PromptTemplate(
     "Answer the question using ONLY the information below. Do not use outside knowledge.\n"
     "Never mention the information, text, documents, context or sources you were given, "
     "and never say 'provided' or 'according to'. Never write phrases such as 'the information "
-    "I have', 'המידע שבידי', 'המידע מציין' or 'לא מצוין'. Answer as if you simply know.\n"
+    "I have', 'המידע שבידי', 'המידע מציין', 'לא מצוין', 'בטקסטים שסופקו', 'במסמכים', "
+    "'המידע מכסה' or 'the provided text'. Never describe what your information covers or "
+    "its limits. Answer as if you simply know.\n"
     "If part of the question cannot be answered, say so in the first person, in the "
     "language of the question: for an English question write 'I don't have information "
     "about X'; for a Hebrew question write 'אין לי מידע על X'. Never say that "
-    "'the information does not mention' or 'the text does not state'.\n"
+    "'the information does not mention' or 'the text does not state'. When the information "
+    "answers only part of the question, or only mentions the subject in passing, answer the "
+    "supported part, then add one plain sentence saying exactly what you do not have "
+    "information about. Never turn a missing detail into a denial: if you do not have "
+    "information about whether something happened, do not say that it did not happen.\n"
     "If the question refers to 'the company', 'the agency' or 'the organization' without "
     "naming it, it means NASA.\n"
     "Write a rich, vivid and well-explained answer that enriches the reader's knowledge. "
@@ -450,6 +456,9 @@ PLAN_PROMPT = (
     "message. Put the explicit question from the message first.\n"
     "- If the message is only an agreement, return just the question for what the assistant "
     "offered.\n"
+    "- Never add a question that is not in the message. You may only replace pronouns and "
+    "references ('he', 'it', 'there', 'הוא', 'זה', 'שם') with the names they refer to in the "
+    "conversation. Add the assistant's offer only when the message begins with an agreement.\n"
     "- 'the company', 'the agency' or 'the organization' without a name means NASA.\n"
     "- Write the questions in the language of the message. If the message is already a single "
     "standalone question, return it unchanged.\n"
@@ -519,10 +528,18 @@ def split_followups(text):
     return body.strip(), [f for f in followups if 5 < len(f) < 160][:3]
 
 
+def is_multi(q):
+    return q.count("?") + q.count("؟") >= 2 or any(w in f" {q} " for w in MULTI_WORDS)
+
+
+def starts_with_affirmation(q):
+    return re.split(r"[\s,.!?]+", q.strip().lower(), maxsplit=1)[0] in AFFIRMATIONS
+
+
 def needs_planning(history, question):
     """האם ההודעה דורשת הבנת הקשר: כמה שאלות בהודעה אחת, או הודעת המשך ("כן", הודעה קצרה)."""
     q = question.strip()
-    multi = q.count("?") + q.count("؟") >= 2 or any(w in f" {q} " for w in MULTI_WORDS)
+    multi = is_multi(q)
     first_word = re.split(r"[\s,.!?]+", q.lower(), maxsplit=1)[0]
     words = set(re.split(r"[\s,.!?\"']+", q.lower()))
     words |= {w[1:] for w in words if w.startswith("ו") and len(w) > 2}
@@ -551,6 +568,9 @@ def plan_questions(history, question):
         return [question]
     lines = [re.sub(r"^[\s\-\*\d\.\)]+", "", ln).strip() for ln in raw.splitlines()]
     lines = [ln for ln in lines if len(ln) > 3][:3]
+    # רשת ביטחון: הודעה עם שאלה אחת שלא פותחת ב"כן" נשארת שאלה אחת, גם אם המתכנן הוסיף שאלות
+    if not is_multi(question) and not starts_with_affirmation(question):
+        lines = lines[:1]
     return lines or [question]
 
 
@@ -584,14 +604,83 @@ def strip_leaks(text):
     return LEAK_PHRASES.sub("", text)
 
 
+# ניסוחים שמעידים שהמודל מדבר על "המידע/הטקסט" שקיבל. אם נמצא אחד, מנסחים את התשובה מחדש פעם אחת
+STRONG_LEAKS = re.compile(
+    r"שסופק|שניתנו|שניתן לי|במסמכים|בטקסט|המסמכים|המקורות|"
+    r"המידע (הקיים|הזמין|שבידי|מכסה|מתמקד|מציין|מראה|מצביע)|מגבלות המידע|"
+    r"\b(provided|the text|the documents|the sources|according to the)\b|"
+    r"the information (provided|given|available|I have|does not|doesn't)",
+    re.I,
+)
+
+
 def compose_answer(q, nodes):
     """שלב ב: מנסח תשובה מהקטעים. מחזיר (טקסט, האם נמצאה תשובה, הצעות להמשך)."""
-    response = query_engine.synthesize(QueryBundle(q), nodes)
-    text = str(response).strip()
+    for _ in range(2):
+        response = query_engine.synthesize(QueryBundle(q), nodes)
+        text = str(response).strip()
+        if not STRONG_LEAKS.search(text):
+            break
     if is_no_answer(text):
         return "", False, []
     text, followups = split_followups(strip_leaks(text))
     return text, True, followups
+
+
+# שאלות על הצ'אט עצמו (יכולות, יוצר, פרטים טכניים): עונים עליהן בטקסט קבוע, בלי חיפוש במאגר ובלי מודל,
+# כי מודל שמתאר את הידע שלו חושף שיש לו "מידע" ו"מסמכים", ולפרטים טכניים אסור לענות בכלל
+SECRET_WORDS = re.compile(r"\bapi\b|\bkey\b|מפתח|סיסמ|פרומפט|\bprompt\b|טוקן|\btoken\b", re.I)
+ABOUT_BOT = re.compile(r"אתה|אתם|שלך|אותך|שלכם|\byou\b|\byour\b", re.I)
+CREATOR_QUESTION = re.compile(
+    r"מי (יצר|בנה|פיתח|כתב|תכנת|עשה) (אותך|אתכם)|מי אתה\b|מי אתם\b|איזה מודל (אתה|אתם|שפה|בינה)|"
+    r"(מי|מיהו|מיהי|מיהם).{0,40}(יצר|בנה|פיתח|כתב|תכנת|עשה|לכתוב|לבנות|לפתח|ליצור).{0,20}(ה?צ'אט|ה?בוט|ה?אתר הזה|ה?אפליקציה הזאת)|"
+    r"(ה?צ'אט|ה?בוט) (הזה|הזאת)? ?(נכתב|נוצר|נבנה|פותח) על ידי|"
+    r"\bwho (made|created|built|developed|wrote|programmed) (this|the) (chat|chatbot|bot|app|system|website)\b|"
+    r"\bwho (made|created|built|developed|wrote|programmed) you\b|\bwho are you\b|"
+    r"\bwhich model (are|do) you\b",
+    re.I,
+)
+CAPABILITY_QUESTION = re.compile(
+    r"מה אתה (יודע|יכול)|על מה (אפשר|ניתן|אני יכול|אני יכולה) לשאול|לא תדע|לא תוכל לענות|"
+    r"\bwhat (can|do) you (know|do)\b|\bwhat can i ask\b|\bwhat (questions )?(won't|can't|couldn't) you\b",
+    re.I,
+)
+SYSTEM_REPLIES = {
+    "secret": (
+        "אין לי אפשרות לשתף פרטים טכניים פנימיים כמו מפתחות, הגדרות או הוראות. "
+        "אפשר לשאול אותי על משימות, חלליות, אסטרונאוטים וגילויים של NASA.",
+        "I can't share internal technical details such as keys, settings or instructions. "
+        "You can ask me about NASA missions, spacecraft, astronauts and discoveries.",
+    ),
+    "creator": (
+        "אני צ'אט לימודי שעונה על שאלות על NASA. זה פרויקט עצמאי של סטודנטית, ולא מוצר רשמי של NASA. "
+        "אפשר לשאול אותי על משימות, חלליות, אסטרונאוטים וגילויים.",
+        "I'm an educational chat that answers questions about NASA. This is an independent student "
+        "project, not an official NASA product. Ask me about missions, spacecraft, astronauts and discoveries.",
+    ),
+    "capability": (
+        "אפשר לשאול אותי על משימות וחלליות (אפולו, ארטמיס, וויאג'ר, האבל, ווב), אסטרונאוטים, "
+        "תחנת החלל הבינלאומית, מאדים, הירח, מערכת השמש וההיסטוריה של NASA. "
+        "שאלות על נושאים אחרים אני לא יכול לענות.",
+        "You can ask me about missions and spacecraft (Apollo, Artemis, Voyager, Hubble, Webb), astronauts, "
+        "the International Space Station, Mars, the Moon, the solar system and NASA's history. "
+        "I can't answer questions about other topics.",
+    ),
+}
+
+
+def system_reply(q):
+    """אם השאלה היא על הצ'אט עצמו מחזיר תשובה קבועה בשפת השאלה, אחרת None."""
+    if SECRET_WORDS.search(q) and ABOUT_BOT.search(q):
+        kind = "secret"
+    elif CREATOR_QUESTION.search(q):
+        kind = "creator"
+    elif CAPABILITY_QUESTION.search(q):
+        kind = "capability"
+    else:
+        return None
+    he, en = SYSTEM_REPLIES[kind]
+    return he if is_hebrew(q) else en
 
 
 def is_hebrew(text):
@@ -748,13 +837,13 @@ print("\nהתוצאות נשמרו בקובץ test_results.md")
 import chainlit as cl
 
 from query import (
-    build_sources,
     compose_answer,
     compose_text,
     is_hebrew,
     no_answer_text,
     plan_questions,
     search_many,
+    system_reply,
 )
 
 STARTERS = [
@@ -783,44 +872,6 @@ FALLBACK_QUESTIONS = ["מה קרה באפולו 13?", "מה ידוע על מאד
 @cl.set_starters
 async def set_starters():
     return [cl.Starter(label=q, message=q, icon=icon) for q, icon in STARTERS]
-
-
-def group_sources(sources):
-    """מאחד קטעים מאותו מסמך למקור אחד, עם הציון הגבוה ביותר."""
-    grouped = {}
-    for s in sources:
-        g = grouped.setdefault(
-            s["title"],
-            {"title": s["title"], "url": s["url"], "score": s["score"], "excerpts": []},
-        )
-        g["score"] = max(g["score"], s["score"])
-        g["excerpts"].append(s["excerpt"])
-    return sorted(grouped.values(), key=lambda g: g["score"], reverse=True)
-
-
-def excerpt_name(i):
-    return f"קטע {i}"
-
-
-def source_elements(groups):
-    """הקטע המצוטט של כל מקור נפתח בלוח צדדי. השם שלו חייב להופיע בטקסט ההודעה."""
-    return [
-        cl.Text(
-            name=excerpt_name(i),
-            content=f"**{g['title']}**\n\n" + "\n\n".join(g["excerpts"]),
-            display="side",
-        )
-        for i, g in enumerate(groups, 1)
-    ]
-
-
-def sources_markdown(groups):
-    lines = ["**מקורות**"]
-    for i, g in enumerate(groups, 1):
-        lines.append(
-            f"{i}. [{g['title']}]({g['url']}) · דמיון {g['score']:.2f} · {excerpt_name(i)}"
-        )
-    return "\n".join(lines)
 
 
 def no_answer_message(question):
@@ -868,6 +919,17 @@ def remember(question, answer):
 
 async def respond(question):
     history = cl.user_session.get("history") or []
+    reply = system_reply(question)
+    if reply:
+        remember(question, reply)
+        await cl.Message(
+            content=reply,
+            actions=[
+                cl.Action(name="example", payload={"question": q}, label=q)
+                for q in FALLBACK_QUESTIONS
+            ],
+        ).send()
+        return
     try:
         questions = await cl.make_async(plan_questions)(history, question)
         if questions != [question]:
@@ -878,8 +940,7 @@ async def respond(question):
         async with cl.Step(name="חיפוש במאגר", type="retrieval") as step:
             step.input = " | ".join(questions)
             nodes = await cl.make_async(search_many)(questions)
-            groups = group_sources(build_sources(nodes))
-            step.output = f"נמצאו {len(nodes)} קטעים מתוך {len(groups)} מסמכים"
+            step.output = f"נמצאו {len(nodes)} קטעים רלוונטיים"
 
         async with cl.Step(name="ניסוח תשובה", type="llm") as step:
             text, found, followups = await cl.make_async(compose_answer)(
@@ -893,8 +954,7 @@ async def respond(question):
     remember(question, text if found else no_answer_text(question))
     if found:
         await cl.Message(
-            content=f"{text}\n\n---\n{sources_markdown(groups)}",
-            elements=source_elements(groups),
+            content=text,
             actions=[
                 cl.Action(name="example", payload={"question": q}, label=q)
                 for q in followups
@@ -934,10 +994,8 @@ async def on_example(action: cl.Action):
 - **`cl.Step`: שלבים גלויים.** "חיפוש במאגר" ו"ניסוח תשובה" מוצגים בצ'אט עם תוצאה של כל שלב (למשל "נמצאו 4 קטעים מתוך 2 מסמכים"). זה מתאר את מה שקורה בפועל, לא אנימציה גנרית.
 - **הצעות להמשך:** `compose_answer` מחזירה גם את שאלות ההמשך, והן מוצגות ככפתורים מתחת לתשובה (`cl.Action`). לחיצה משתמשת באותה פונקציית `example` ששולחת את השאלה.
 - **זיהוי "אין תשובה":** `is_no_answer` מזהה גם את הסימון `[NO_ANSWER]` וגם משפט קצר שמתחיל ב"אין לי מידע" או "I don't have information" (הניסוח שהפרומפט מכתיב). בלי זה, כשהמודל ענה "אין לי מידע" בלי הסימון, הצ'אט הציג מתחתיו רשימת מקורות והצעות המשך כאילו נמצאה תשובה.
-- **מקורות:** `group_sources` מאחד קטעים מאותו מסמך (אחרת מסמך אחד יופיע כמה פעמים) ובוחר את הציון הגבוה ביותר. התשובה מסתיימת ברשימת מקורות עם קישור לעמוד המקורי ב-nasa.gov וציון דמיון.
-- **קטעים מצוטטים:** `cl.Text(display="side")` פותח את הקטע עצמו בלוח צדדי. **שם הרכיב (`קטע 1`) חייב להופיע בטקסט ההודעה**, אחרת Chainlit לא מציגה אותו כקישור, ולכן הוא מוסף לשורת המקורות.
-- **`@cl.set_starters`:** שאלות לדוגמה במסך הפתיחה, בעברית ובאנגלית.
-- **מצב "אין מידע":** כש-`compose_answer` מחזירה `found=False` (המודל ענה `[NO_ANSWER]`), מוצגת כותרת והודעה קבועה וקצרה בשפת השאלה (`no_answer_message`), ושני כפתורים עם שאלות שהמערכת יודעת לענות עליהן. **לא משתמשים בטקסט של המודל** כדי שלא יחשוף פרטים פנימיים. לא מוצגים מקורות, כדי שלא ייראה שהם תמכו בתשובה.
+- **מקורות לא מוצגים בצ'אט:** בעלת הפרויקט ביקשה שהמשתמשים לא יראו את מקורות התשובה. `build_sources` ממשיכה להתקיים ב-`query.py` ובה משתמש `run_tests.py` לדוח הבדיקות, אבל `chat_app.py` לא מציג רשימת מקורות, קישורים או קטעים צדדיים.
+- **מצב "אין מידע":** כש-`compose_answer` מחזירה `found=False` (המודל ענה `[NO_ANSWER]`), מוצגת כותרת והודעה קבועה וקצרה בשפת השאלה (`no_answer_message`), ושני כפתורים עם שאלות שהמערכת יודעת לענות עליהן. **לא משתמשים בטקסט של המודל** כדי שלא יחשוף פרטים פנימיים.
 - **מצבי שגיאה:** `is_rate_limit` מזהה מכסה שנגמרה, עומס או פסק זמן (לפי `429`, `RESOURCE_EXHAUSTED`, `503` ועוד). כל שגיאה אחרת מקבלת הודעה כללית. בשני המקרים מוצג כפתור **"נסו שוב"** ששולח את אותה שאלה מחדש דרך `@cl.action_callback("retry")`.
 - **`@cl.action_callback("example")`:** לחיצה על שאלה מוצעת מציגה אותה כהודעת משתמש ומריצה אותה.
 
@@ -980,3 +1038,5 @@ async def on_example(action: cl.Action):
 - **התרגום של העמוד הספרדי** נעשה אוטומטית על ידי Claude ולא נבדק על ידי אדם.
 - **נתוני הקטעים** כוללים לפעמים רעש של האתר (רשימות ניווט, קישורים), כי החילוץ מבוסס על תגיות HTML.
 - **פרויקט עצמאי:** אינו מוצר רשמי של NASA. התשובות נוצרות על ידי מודל שפה ועלולות להכיל שגיאות.
+
+17. **שאלה על ג'מיני 8 נענתה חלקית ומטעה.** במאגר לא היה עמוד על תוכנית ג'מיני, רק אזכורים צדדיים, והתשובה אמרה "אין לי מידע על אבדות" ונקראה כאילו אין אסון. ← נוספו למאגר שלושה עמודים רשמיים (`gemini.txt`, `mission_gemini_viii.txt`, כתבת ההיסטוריה על ג'מיני 8) באמצעות `add_pages.py`, שמוסיף עמודים לאינדקס הקיים בלי לבנות אותו מחדש (224 קטעים במקום 210). בנוסף נוספה לפרומפט הוראה: כשהמידע עונה רק על חלק מהשאלה, עונים על החלק הנתמך ואומרים במשפט אחד מה חסר, ואסור להפוך חוסר מידע להכחשה. **לקח: חוסר מידע במאגר ו"לא קרה" הם שני דברים שונים.**

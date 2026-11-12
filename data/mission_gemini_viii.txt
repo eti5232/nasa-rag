@@ -1,0 +1,64 @@
+Gemini VIII
+Source: https://www.nasa.gov/mission/gemini-viii/
+
+Gemini VIII, the sixth crewed Earth-orbiting mission of the Gemini series, was flown by astronauts Neil Armstrong and David Scott. On the first day of their mission they completed the first docking in space, but a life-threatening malfunction of the spacecraft’s thruster resulted in the mission being aborted soon after.
+
+Gemini VIII was the sixth crewed Earth-orbiting spacecraft of the Gemini series, carrying astronauts Neil Armstrong and David Scott. The primary mission objectives were to perform rendezvous and four docking tests with the Agena target vehicle and to execute an extravehicular activity (EVA). Other objectives included parking the Agena in a 410 km circular orbit, performing a re-rendezvous with the Agena, conduct systems evaluation, evaluating the auxiliary tape memory unit, and demonstration of controlled reentry. Ten technological, medical, and scientific experiments were carried on board.
+
+Featured Story Gemini’s First Docking Turns to Wild Ride in Orbit In early 1966, Gemini VIII chalked up another crucial spaceflight technology milestone for the United States. But the triumph quickly…
+
+Crew: Neil A. Armstrong (Command Pilot) and David R. Scott (Pilot)
+
+Backup Crew: Charles “Pete” Conrad Jr. and Richard F. Gordon Jr.
+
+Launch Date: Mar. 16, 1966, 11:41:02 a.m. EST (16:41:02 UT)
+
+Launch Site: Complex 19, Cape Canaveral, United States
+
+Duration: 10 hours, 41 minutes, 26 seconds
+
+Landing Date: Mar. 16, 1966, 10:22:28 p.m. EST (Mar. 17, 1966, 03:22:28 UT)
+
+Landing Site: Western Pacific Ocean, 25.220° N 136.000° E
+
+After joining NASA’s predecessor, the NACA, as a research pilot in 1955, Neil A. Armstrong was selected as an astronaut in NASA’s second astronaut group. Gemini VIII was his first spaceflight where he and pilot David Scott completed the first docking in space. In July 1969, he led the Apollo 11 mission, becoming the first person to step foot on the Moon.
+
+Gemini 8 Command Pilot Neil A. Armstrong seen through window of Gemini 8 Spacecraft just before liftoff. NASA David R. Scott
+
+David R. Scott was selected in NASA’s third group of astronauts in October 1963. Over his NASA career, he flew on three space missions: Gemini VIII, Apollo 9, and Apollo 15. He is the seventh human to set foot on the Moon.
+
+Gemini 8 Pilot David R. Scott seen through window of Gemini VIII spacecraft just before liftoff. NASA Mission Overview
+
+Gemini VIII was launched from Complex 19 at 11:41:02 a.m. EST (16:41:02.389 UT) on Mar. 16, 1966, and inserted into a 159.9 x 271.9 km orbit at 11:47:36 EST. Over the next six hours the spacecraft performed 9 maneuvers to rendezvous with the Gemini Agena Target Vehicle (GATV), which had been launched earlier (at 9:00 a.m. EST). The rendezvous phase ended at 4:39 p.m. EST, with the spacecraft 45 meters apart with zero relative motion. Stationkeeping and other maneuvers were performed for about half an hour, and then Gemini VIII moved in and docked with the GATV on the fifth revolution at 5:14 p.m., the first docking ever to take place in space.
+
+About 27 minutes after docking at 5:41 p.m. the combined vehicle began to go into a violent yaw and tumble. Armstrong disengaged the Gemini capsule from the GATV causing it to roll, pitch, and yaw even more rapidly than when it was connected to the GATV, approaching and possibly exceeding a rate of one revolution per second. Armstrong and Scott managed to deactivate the Orbit Attitude and Maneuver System (OAMS) and in a final attempt to counteract the violent tumbling, all 16 reentry control system (RCS) thrusters were utilized to damp out the roll. This maneuver succeeded in stabilizing the spacecraft at 6:06:30 p.m. but ended up using 75% of the RCS fuel. It was then discovered that one of the 25-pound OAMS roll thrusters (roll thruster no. 8) on Gemini 8 had been firing continuously, causing the tumbling. Apparently, it had short-circuited while being used to maneuver the Gemini-GATV combination and had stuck open.
+
+Due to the premature use of the reentry control system an immediate landing was required by Gemini safety rules, so the planned EVA and other activities were cancelled. Retrofire took place on the seventh revolution at 9:45:49 p.m. on Mar. 16, just over 10 hours after launch, and the spacecraft splashed down in the western Pacific Ocean about 800 km west of Okinawa at 25.22° N, 136.00° E, 2 km from the target. The time was 10:22:28 p.m. EST, but was during the day at the splashdown site. US Air Force frogmen parachuted from a C-54 rescue plane within minutes and affixed a flotation collar around the spacecraft. The crew was picked up by the recovery ship U.S.S. Mason 3 hours later (1:28 a.m. EST, Mar. 17) and the spacecraft at 1:37 a.m. Total mission elapsed time was 10 hours, 41 minutes, and 26 seconds.
+
+Early termination of the mission precluded achievement of many mission objectives, but the rendezvous and docking was accomplished, as was the evaluation of the auxiliary tape memory unit and demonstration of controlled reentry. Of the six scientific experiments only the Agena micrometeorite collection was successful. The others — (1) zodiacal light photography, (2) frog egg growth, (3) synoptic terrain photography, (4) nuclear emulsions, and (5) spectrophotography of clouds — were incomplete. The Agena Target Vehicle remained in orbit and maneuvers were performed by ground command, including successfully placing it into circular orbit.
+
+The primary goals of Project Gemini included proving the techniques required for the Apollo Program to fulfill President John F. Kennedy’s goal of landing a man on the Moon and returning him safely to Earth before the end of the…
+
+Article Gemini’s First Docking Turns to Wild Ride in Orbit 8 min read In early 1966, Gemini VIII chalked up another crucial spaceflight technology milestone for the United States. But the triumph quickly became an in-flight emergency, testing NASA’s quick-thinking skills to bring the astronauts safely home. The crew of Gemini VIII was…
+
+26 Images Go To Gallery Go To Gallery Resources to Learn More
+
+On the Shoulders of Titans: A History of Project Gemini
+
+By Barton C. Hacker and James M. Grimwood (1977). (NASA SP-4203)
+
+Project Gemini Technology and Operations: A Chronology
+
+By James M. Grimwood and Barton C. Hacker, with Peter J. Vorzimmer (1969). (NASA SP-4002)
+
+February 1-2, 1967, Manned Spacecraft Center, Houston, TX. (NASA SP-138)
+
+Transcript from the September 19, 2001 oral history interview with Neil Armstrong.
+
+Keep Exploring Discover More Topics From NASA
+
+National Aeronautics and Space Administration
+
+NASA explores the unknown in air and space, innovates for the benefit of humanity, and inspires the world through discovery.
+
+Responsible NASA Official: Abigail Bowman

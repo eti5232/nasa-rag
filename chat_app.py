@@ -1,11 +1,10 @@
 # שלב 11 - ממשק Chainlit
 import chainlit as cl
 
+from guards import answer_style, image_note, is_hebrew, system_reply
 from query import (
-    build_sources,
     compose_answer,
     compose_text,
-    is_hebrew,
     no_answer_text,
     plan_questions,
     search_many,
@@ -37,44 +36,6 @@ FALLBACK_QUESTIONS = ["מה קרה באפולו 13?", "מה ידוע על מאד
 @cl.set_starters
 async def set_starters():
     return [cl.Starter(label=q, message=q, icon=icon) for q, icon in STARTERS]
-
-
-def group_sources(sources):
-    """מאחד קטעים מאותו מסמך למקור אחד, עם הציון הגבוה ביותר."""
-    grouped = {}
-    for s in sources:
-        g = grouped.setdefault(
-            s["title"],
-            {"title": s["title"], "url": s["url"], "score": s["score"], "excerpts": []},
-        )
-        g["score"] = max(g["score"], s["score"])
-        g["excerpts"].append(s["excerpt"])
-    return sorted(grouped.values(), key=lambda g: g["score"], reverse=True)
-
-
-def excerpt_name(i):
-    return f"קטע {i}"
-
-
-def source_elements(groups):
-    """הקטע המצוטט של כל מקור נפתח בלוח צדדי. השם שלו חייב להופיע בטקסט ההודעה."""
-    return [
-        cl.Text(
-            name=excerpt_name(i),
-            content=f"**{g['title']}**\n\n" + "\n\n".join(g["excerpts"]),
-            display="side",
-        )
-        for i, g in enumerate(groups, 1)
-    ]
-
-
-def sources_markdown(groups):
-    lines = ["**מקורות**"]
-    for i, g in enumerate(groups, 1):
-        lines.append(
-            f"{i}. [{g['title']}]({g['url']}) · דמיון {g['score']:.2f} · {excerpt_name(i)}"
-        )
-    return "\n".join(lines)
 
 
 def no_answer_message(question):
@@ -122,6 +83,17 @@ def remember(question, answer):
 
 async def respond(question):
     history = cl.user_session.get("history") or []
+    reply = system_reply(question)
+    if reply:
+        remember(question, reply)
+        await cl.Message(
+            content=reply,
+            actions=[
+                cl.Action(name="example", payload={"question": q}, label=q)
+                for q in FALLBACK_QUESTIONS
+            ],
+        ).send()
+        return
     try:
         questions = await cl.make_async(plan_questions)(history, question)
         if questions != [question]:
@@ -132,12 +104,11 @@ async def respond(question):
         async with cl.Step(name="חיפוש במאגר", type="retrieval") as step:
             step.input = " | ".join(questions)
             nodes = await cl.make_async(search_many)(questions)
-            groups = group_sources(build_sources(nodes))
-            step.output = f"נמצאו {len(nodes)} קטעים מתוך {len(groups)} מסמכים"
+            step.output = f"נמצאו {len(nodes)} קטעים רלוונטיים"
 
         async with cl.Step(name="ניסוח תשובה", type="llm") as step:
             text, found, followups = await cl.make_async(compose_answer)(
-                compose_text(questions), nodes
+                compose_text(questions), nodes, answer_style(question)
             )
             step.output = "התשובה נוסחה מהקטעים שנמצאו"
     except Exception as error:
@@ -147,8 +118,7 @@ async def respond(question):
     remember(question, text if found else no_answer_text(question))
     if found:
         await cl.Message(
-            content=f"{text}\n\n---\n{sources_markdown(groups)}",
-            elements=source_elements(groups),
+            content=image_note(question) + text,
             actions=[
                 cl.Action(name="example", payload={"question": q}, label=q)
                 for q in followups
